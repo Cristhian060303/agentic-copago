@@ -78,9 +78,9 @@ App disponible en `http://localhost:5173`.
 
 ## Equipo
 
-- Gabriel
-- Diego
-- Cristhian
+- Gabriel Tumbaco
+- Diego Parrales
+- Cristhian Bastidas
 
 ## Licencia
 
