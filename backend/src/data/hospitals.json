@@ -1,0 +1,102 @@
+[
+  {
+    "id": "metropolitano",
+    "nombre": "Hospital Metropolitano",
+    "ciudad": "Quito",
+    "tier": "premium",
+    "rating": 4.8,
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "dermatologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "oftalmologia",
+      "endocrinologia"
+    ],
+    "precios": {
+      "consulta_general": 65,
+      "consulta_especialista": 130
+    }
+  },
+  {
+    "id": "kennedy",
+    "nombre": "Hospital Kennedy",
+    "ciudad": "Guayaquil",
+    "tier": "premium",
+    "rating": 4.7,
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "dermatologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "oftalmologia",
+      "endocrinologia"
+    ],
+    "precios": {
+      "consulta_general": 60,
+      "consulta_especialista": 120
+    }
+  },
+  {
+    "id": "axxis",
+    "nombre": "Hospital Axxis",
+    "ciudad": "Quito",
+    "tier": "medio-alto",
+    "rating": 4.6,
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "dermatologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "oftalmologia"
+    ],
+    "precios": {
+      "consulta_general": 50,
+      "consulta_especialista": 100
+    }
+  },
+  {
+    "id": "vozandes",
+    "nombre": "Hospital Vozandes",
+    "ciudad": "Quito",
+    "tier": "medio",
+    "rating": 4.5,
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia"
+    ],
+    "precios": {
+      "consulta_general": 40,
+      "consulta_especialista": 80
+    }
+  },
+  {
+    "id": "pichincha",
+    "nombre": "Clínica Pichincha",
+    "ciudad": "Quito",
+    "tier": "economico",
+    "rating": 4.2,
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia"
+    ],
+    "precios": {
+      "consulta_general": 25,
+      "consulta_especialista": 55
+    }
+  }
+]

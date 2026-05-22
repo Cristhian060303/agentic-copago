@@ -1,0 +1,47 @@
+[
+  {
+    "id": "medicina_general",
+    "nombre": "Medicina General",
+    "sintomas_comunes": ["fiebre", "malestar general", "gripe", "resfriado", "dolor muscular", "fatiga", "tos"]
+  },
+  {
+    "id": "cardiologia",
+    "nombre": "Cardiología",
+    "sintomas_comunes": ["dolor de pecho", "palpitaciones", "presión alta", "falta de aire", "mareos al esfuerzo"]
+  },
+  {
+    "id": "dermatologia",
+    "nombre": "Dermatología",
+    "sintomas_comunes": ["manchas en la piel", "acné", "alergias cutáneas", "caída del cabello", "lunares sospechosos", "psoriasis"]
+  },
+  {
+    "id": "ginecologia",
+    "nombre": "Ginecología",
+    "sintomas_comunes": ["dolor pélvico", "control ginecológico", "embarazo", "alteraciones menstruales", "papanicolau"]
+  },
+  {
+    "id": "pediatria",
+    "nombre": "Pediatría",
+    "sintomas_comunes": ["control del niño sano", "fiebre en niños", "vacunación", "diarrea infantil", "crecimiento"]
+  },
+  {
+    "id": "traumatologia",
+    "nombre": "Traumatología",
+    "sintomas_comunes": ["dolor articular", "fractura", "esguince", "dolor de espalda", "dolor de rodilla", "dolor de hombro"]
+  },
+  {
+    "id": "gastroenterologia",
+    "nombre": "Gastroenterología",
+    "sintomas_comunes": ["dolor abdominal", "acidez", "diarrea persistente", "estreñimiento", "náuseas", "reflujo"]
+  },
+  {
+    "id": "oftalmologia",
+    "nombre": "Oftalmología",
+    "sintomas_comunes": ["visión borrosa", "dolor de ojos", "ojos rojos", "control visual", "lentes"]
+  },
+  {
+    "id": "endocrinologia",
+    "nombre": "Endocrinología",
+    "sintomas_comunes": ["diabetes", "tiroides", "obesidad", "alteraciones hormonales", "control de azúcar"]
+  }
+]

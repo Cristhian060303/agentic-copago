@@ -1,0 +1,53 @@
+[
+  {
+    "id": "salud-esencial",
+    "nombre": "Salud S.A. Esencial",
+    "tier": "basico",
+    "prima_mensual": 45,
+    "deducible_anual": 300,
+    "cobertura": {
+      "consulta_general": 60,
+      "consulta_especialista": 50,
+      "examenes_laboratorio": 70,
+      "imagen_diagnostica": 60
+    },
+    "copago_minimo": 15,
+    "hospitales_red": ["vozandes", "pichincha"],
+    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad"],
+    "tope_consultas_anuales": 12
+  },
+  {
+    "id": "ecuasanitas-familiar",
+    "nombre": "Ecuasanitas Familiar Plus",
+    "tier": "intermedio",
+    "prima_mensual": 85,
+    "deducible_anual": 150,
+    "cobertura": {
+      "consulta_general": 80,
+      "consulta_especialista": 75,
+      "examenes_laboratorio": 85,
+      "imagen_diagnostica": 80
+    },
+    "copago_minimo": 10,
+    "hospitales_red": ["vozandes", "axxis", "metropolitano", "kennedy"],
+    "exclusiones": ["medicina_estetica"],
+    "tope_consultas_anuales": 24
+  },
+  {
+    "id": "bmi-platinum",
+    "nombre": "BMI Platinum",
+    "tier": "premium",
+    "prima_mensual": 180,
+    "deducible_anual": 0,
+    "cobertura": {
+      "consulta_general": 100,
+      "consulta_especialista": 90,
+      "examenes_laboratorio": 95,
+      "imagen_diagnostica": 90
+    },
+    "copago_minimo": 0,
+    "hospitales_red": ["vozandes", "pichincha", "axxis", "metropolitano", "kennedy"],
+    "exclusiones": [],
+    "tope_consultas_anuales": null
+  }
+]

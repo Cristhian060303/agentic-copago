@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# env vars (¡nunca commitear API keys!)
+.env
+.env.local
+.env.*.local
+
+# builds
+dist/
+build/
+.vite/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Claude / harness
+.claude/
+
+# Plan técnico interno
+PLAN.md

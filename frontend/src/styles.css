@@ -1,0 +1,16 @@
+#chat { scroll-behavior: smooth; }
+
+.chat-bubble {
+  animation: fadeIn 0.18s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* mejor look del selector */
+#plan-selector:focus {
+  outline: 2px solid #059669;
+  outline-offset: 1px;
+}
