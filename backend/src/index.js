@@ -4,6 +4,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import agentRouter from './routes/agent.js';
 import plansRouter from './routes/plans.js';
+import hospitalsRouter from './routes/hospitals.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,6 +25,8 @@ app.use('/api/agent', agentRouter);
 app.use('/api/plans', plansRouter);
 
 app.get('/health', (_req, res) => res.json({ ok: true, ts: Date.now() }));
+
+app.use('/api/hospitals', hospitalsRouter);
 
 app.use((err, _req, res, _next) => {
   console.error('[unhandled]', err?.message);
