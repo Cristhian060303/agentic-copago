@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import agentRouter from './routes/agent.js';
 import plansRouter from './routes/plans.js';
 import voiceRouter from './routes/voice.js';
+import hospitalsRouter from './routes/hospitals.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,6 +25,7 @@ app.use('/api/', rateLimit({
 app.use('/api/agent', agentRouter);
 app.use('/api/plans', plansRouter);
 app.use('/api/voice', voiceRouter);
+app.use('/api/hospitals', hospitalsRouter);
 
 app.get('/health', (_req, res) => res.json({ ok: true, ts: Date.now() }));
 

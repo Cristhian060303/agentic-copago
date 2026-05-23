@@ -8,6 +8,7 @@ router.get('/', (_req, res) => {
   res.json(plans.map(p => ({
     id: p.id,
     nombre: p.nombre,
+    aseguradora: p.aseguradora,
     tier: p.tier,
     prima_mensual: p.prima_mensual,
     deducible_anual: p.deducible_anual

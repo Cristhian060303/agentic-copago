@@ -13,6 +13,16 @@ Especialidades disponibles (usa EXACTAMENTE estos ids, en minúsculas):
 - gastroenterologia
 - oftalmologia
 - endocrinologia
+- neurologia
+- psiquiatria
+- urologia
+- neumologia
+- oncologia
+- reumatologia
+- otorrinolaringologia
+- psicologia
+- nutricion
+- medicina_interna
 
 DEBES responder EXCLUSIVAMENTE con un JSON con esta forma exacta:
 {

@@ -3,8 +3,11 @@
     "id": "metropolitano",
     "nombre": "Hospital Metropolitano",
     "ciudad": "Quito",
+    "provincia": "Pichincha",
     "tier": "premium",
     "rating": 4.8,
+    "telefono": "02-399-8000",
+    "direccion": "Av. Mariana de Jesús s/n y Occidental",
     "especialidades": [
       "medicina_general",
       "cardiologia",
@@ -14,7 +17,17 @@
       "traumatologia",
       "gastroenterologia",
       "oftalmologia",
-      "endocrinologia"
+      "endocrinologia",
+      "neurologia",
+      "oncologia",
+      "urologia",
+      "neumologia",
+      "psiquiatria",
+      "reumatologia",
+      "otorrinolaringologia",
+      "psicologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 65,
@@ -22,11 +35,14 @@
     }
   },
   {
-    "id": "kennedy",
-    "nombre": "Hospital Kennedy",
-    "ciudad": "Guayaquil",
-    "tier": "premium",
-    "rating": 4.7,
+    "id": "axxis",
+    "nombre": "Hospital Axxis",
+    "ciudad": "Quito",
+    "provincia": "Pichincha",
+    "tier": "medio-alto",
+    "rating": 4.6,
+    "telefono": "02-226-2100",
+    "direccion": "10 de Agosto N39-155 y Diguja",
     "especialidades": [
       "medicina_general",
       "cardiologia",
@@ -36,27 +52,13 @@
       "traumatologia",
       "gastroenterologia",
       "oftalmologia",
-      "endocrinologia"
-    ],
-    "precios": {
-      "consulta_general": 60,
-      "consulta_especialista": 120
-    }
-  },
-  {
-    "id": "axxis",
-    "nombre": "Hospital Axxis",
-    "ciudad": "Quito",
-    "tier": "medio-alto",
-    "rating": 4.6,
-    "especialidades": [
-      "medicina_general",
-      "cardiologia",
-      "dermatologia",
-      "ginecologia",
-      "pediatria",
-      "traumatologia",
-      "oftalmologia"
+      "endocrinologia",
+      "neurologia",
+      "urologia",
+      "neumologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 50,
@@ -64,18 +66,28 @@
     }
   },
   {
-    "id": "vozandes",
-    "nombre": "Hospital Vozandes",
+    "id": "vozandes_quito",
+    "nombre": "Hospital Vozandes Quito",
     "ciudad": "Quito",
+    "provincia": "Pichincha",
     "tier": "medio",
     "rating": 4.5,
+    "telefono": "02-226-2142",
+    "direccion": "Villalengua Oe2-37 y 10 de Agosto",
     "especialidades": [
       "medicina_general",
       "cardiologia",
       "ginecologia",
       "pediatria",
       "traumatologia",
-      "gastroenterologia"
+      "gastroenterologia",
+      "dermatologia",
+      "oftalmologia",
+      "endocrinologia",
+      "neurologia",
+      "urologia",
+      "otorrinolaringologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 40,
@@ -86,17 +98,569 @@
     "id": "pichincha",
     "nombre": "Clínica Pichincha",
     "ciudad": "Quito",
+    "provincia": "Pichincha",
     "tier": "economico",
     "rating": 4.2,
+    "telefono": "02-299-7000",
+    "direccion": "Veintimilla E3-30 y Páez",
     "especialidades": [
       "medicina_general",
       "ginecologia",
       "pediatria",
-      "traumatologia"
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "oftalmologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 25,
       "consulta_especialista": 55
+    }
+  },
+  {
+    "id": "internacional_quito",
+    "nombre": "Hospital Internacional",
+    "ciudad": "Quito",
+    "provincia": "Pichincha",
+    "tier": "medio",
+    "rating": 4.3,
+    "telefono": "02-254-9166",
+    "direccion": "Av. Brasil 2420 y Mariana de Jesús",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "otorrinolaringologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 35,
+      "consulta_especialista": 70
+    }
+  },
+  {
+    "id": "novaclinica",
+    "nombre": "Novaclinica",
+    "ciudad": "Quito",
+    "provincia": "Pichincha",
+    "tier": "medio",
+    "rating": 4.3,
+    "telefono": "02-226-0715",
+    "direccion": "12 de Octubre N24-562 y Madrid",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "urologia",
+      "endocrinologia",
+      "otorrinolaringologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 35,
+      "consulta_especialista": 75
+    }
+  },
+  {
+    "id": "kennedy",
+    "nombre": "Hospital Kennedy",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "premium",
+    "rating": 4.7,
+    "telefono": "04-228-9666",
+    "direccion": "Av. San Jorge y 9na Norte, Alborada",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "dermatologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "oftalmologia",
+      "endocrinologia",
+      "neurologia",
+      "oncologia",
+      "urologia",
+      "neumologia",
+      "psiquiatria",
+      "reumatologia",
+      "otorrinolaringologia",
+      "psicologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 60,
+      "consulta_especialista": 120
+    }
+  },
+  {
+    "id": "alcívar",
+    "nombre": "Clínica Alcívar",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "medio-alto",
+    "rating": 4.5,
+    "telefono": "04-256-0800",
+    "direccion": "Coronel 2301 y Azuay",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "neurologia",
+      "urologia",
+      "neumologia",
+      "oftalmologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 50,
+      "consulta_especialista": 100
+    }
+  },
+  {
+    "id": "del_sol",
+    "nombre": "Hospital del Sol",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "medio",
+    "rating": 4.3,
+    "telefono": "04-228-8900",
+    "direccion": "Av. Juan Tanca Marengo y Heroes del Cenepa",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "urologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 40,
+      "consulta_especialista": 80
+    }
+  },
+  {
+    "id": "clinica_guayaquil",
+    "nombre": "Clínica Guayaquil",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "economico",
+    "rating": 4.0,
+    "telefono": "04-256-8850",
+    "direccion": "Padre Aguirre 401 y Córdova",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 22,
+      "consulta_especialista": 50
+    }
+  },
+  {
+    "id": "omni_hospital",
+    "nombre": "OmniHospital",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "premium",
+    "rating": 4.7,
+    "telefono": "04-683-9000",
+    "direccion": "Av. Francisco de Orellana y Alberto Borges, CC Garzocentro",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "dermatologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "oftalmologia",
+      "endocrinologia",
+      "neurologia",
+      "oncologia",
+      "urologia",
+      "neumologia",
+      "otorrinolaringologia",
+      "psicologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 60,
+      "consulta_especialista": 125
+    }
+  },
+  {
+    "id": "monte_sinai",
+    "nombre": "Hospital Monte Sinaí",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "medio-alto",
+    "rating": 4.4,
+    "telefono": "04-320-0400",
+    "direccion": "Av. Pedro Menéndez Gilbert y Lorenzo de Garaicoa",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "oftalmologia",
+      "neurologia",
+      "urologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 48,
+      "consulta_especialista": 95
+    }
+  },
+  {
+    "id": "santa_ines",
+    "nombre": "Clínica Santa Inés",
+    "ciudad": "Cuenca",
+    "provincia": "Azuay",
+    "tier": "medio-alto",
+    "rating": 4.5,
+    "telefono": "07-281-6965",
+    "direccion": "Av. Daniel Córdova Toral 2-113 y Agustín Cueva",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "oftalmologia",
+      "neurologia",
+      "urologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 45,
+      "consulta_especialista": 90
+    }
+  },
+  {
+    "id": "monte_sinai_cuenca",
+    "nombre": "Clínica Monte Sinaí Cuenca",
+    "ciudad": "Cuenca",
+    "provincia": "Azuay",
+    "tier": "medio",
+    "rating": 4.3,
+    "telefono": "07-288-5595",
+    "direccion": "Miguel Cordero 6-111 y Av. Solano",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 35,
+      "consulta_especialista": 75
+    }
+  },
+  {
+    "id": "vozandes_shell",
+    "nombre": "Hospital Vozandes del Oriente",
+    "ciudad": "Shell",
+    "provincia": "Pastaza",
+    "tier": "medio",
+    "rating": 4.4,
+    "telefono": "03-279-5171",
+    "direccion": "Av. Amazonas y Atahualpa, Shell-Mera",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 30,
+      "consulta_especialista": 65
+    }
+  },
+  {
+    "id": "solca_quito",
+    "nombre": "SOLCA Quito",
+    "ciudad": "Quito",
+    "provincia": "Pichincha",
+    "tier": "medio-alto",
+    "rating": 4.6,
+    "telefono": "02-254-8527",
+    "direccion": "Av. 6 de Diciembre N22-44 y Av. Patria",
+    "especialidades": [
+      "oncologia",
+      "medicina_general",
+      "endocrinologia",
+      "ginecologia",
+      "neurologia",
+      "neumologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 45,
+      "consulta_especialista": 95
+    }
+  },
+  {
+    "id": "solca_guayaquil",
+    "nombre": "SOLCA Guayaquil",
+    "ciudad": "Guayaquil",
+    "provincia": "Guayas",
+    "tier": "medio-alto",
+    "rating": 4.6,
+    "telefono": "04-229-7272",
+    "direccion": "Av. Pedro Menéndez Gilbert y Coronel, Urdesa",
+    "especialidades": [
+      "oncologia",
+      "medicina_general",
+      "endocrinologia",
+      "ginecologia",
+      "neurologia",
+      "neumologia",
+      "urologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 45,
+      "consulta_especialista": 95
+    }
+  },
+  {
+    "id": "clinica_portoviejo",
+    "nombre": "Clínica Portoviejo",
+    "ciudad": "Portoviejo",
+    "provincia": "Manabí",
+    "tier": "medio",
+    "rating": 4.1,
+    "telefono": "05-265-2222",
+    "direccion": "Chile y Córdova, Centro",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 30,
+      "consulta_especialista": 65
+    }
+  },
+  {
+    "id": "clinica_ambato",
+    "nombre": "Clínica Ambato",
+    "ciudad": "Ambato",
+    "provincia": "Tungurahua",
+    "tier": "medio",
+    "rating": 4.2,
+    "telefono": "03-242-3622",
+    "direccion": "Av. El Rey y Confraternidad, Ficoa",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 30,
+      "consulta_especialista": 65
+    }
+  },
+  {
+    "id": "clinica_ibarra",
+    "nombre": "Clínica Ibarra",
+    "ciudad": "Ibarra",
+    "provincia": "Imbabura",
+    "tier": "economico",
+    "rating": 4.0,
+    "telefono": "06-295-3500",
+    "direccion": "García Moreno 3-34 y Rocafuerte",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 20,
+      "consulta_especialista": 45
+    }
+  },
+  {
+    "id": "clinica_loja",
+    "nombre": "Clínica Los Andes Loja",
+    "ciudad": "Loja",
+    "provincia": "Loja",
+    "tier": "economico",
+    "rating": 4.1,
+    "telefono": "07-257-8585",
+    "direccion": "Av. Isidro Ayora y Manuel Agustín Aguirre",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 22,
+      "consulta_especialista": 48
+    }
+  },
+  {
+    "id": "clinica_esmeraldas",
+    "nombre": "Clínica del Pacífico",
+    "ciudad": "Esmeraldas",
+    "provincia": "Esmeraldas",
+    "tier": "economico",
+    "rating": 3.9,
+    "telefono": "06-272-7890",
+    "direccion": "Av. Libertad y Piedrahita",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 18,
+      "consulta_especialista": 40
+    }
+  },
+  {
+    "id": "clinica_riobamba",
+    "nombre": "Hospital Andino Alternativo",
+    "ciudad": "Riobamba",
+    "provincia": "Chimborazo",
+    "tier": "medio",
+    "rating": 4.2,
+    "telefono": "03-294-5358",
+    "direccion": "Av. Unidad Nacional y Pasteur, Cdla. Pucará",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "endocrinologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 28,
+      "consulta_especialista": 60
+    }
+  },
+  {
+    "id": "clinica_machala",
+    "nombre": "Clínica Kennedy Machala",
+    "ciudad": "Machala",
+    "provincia": "El Oro",
+    "tier": "medio",
+    "rating": 4.1,
+    "telefono": "07-293-2711",
+    "direccion": "Av. Bolivar y 9 de Mayo",
+    "especialidades": [
+      "medicina_general",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "cardiologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 28,
+      "consulta_especialista": 60
+    }
+  },
+  {
+    "id": "clinica_manta",
+    "nombre": "Clínica Manta",
+    "ciudad": "Manta",
+    "provincia": "Manabí",
+    "tier": "medio",
+    "rating": 4.1,
+    "telefono": "05-262-2555",
+    "direccion": "Av. 4 y Calle 12, sector Las Piñas",
+    "especialidades": [
+      "medicina_general",
+      "cardiologia",
+      "ginecologia",
+      "pediatria",
+      "traumatologia",
+      "gastroenterologia",
+      "dermatologia",
+      "medicina_interna"
+    ],
+    "precios": {
+      "consulta_general": 28,
+      "consulta_especialista": 60
     }
   }
 ]

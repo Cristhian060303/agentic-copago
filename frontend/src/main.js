@@ -220,6 +220,23 @@ function appendEstimate(estimacion) {
   chatEl.scrollTop = chatEl.scrollHeight;
 }
 
+let widestPlanNombre = '';
+
+function lockToggleWidth() {
+  if (window.innerWidth < 640) {
+    planToggle.style.width = '';
+    planMenu.style.minWidth = '';
+    return;
+  }
+  const current = planLabel.textContent;
+  planLabel.textContent = widestPlanNombre;
+  planToggle.style.width = '';
+  const w = planToggle.offsetWidth + 'px';
+  planToggle.style.width = w;
+  planMenu.style.minWidth = w;
+  planLabel.textContent = current;
+}
+
 function closeMenu() {
   planMenu.classList.remove('open');
   planToggle.classList.remove('open');
@@ -244,15 +261,10 @@ async function loadPlans() {
 
     state.planId = plans[0].id;
 
-    // On desktop only: lock button width to widest option to prevent resize on selection
     const widest = plans.reduce((a, b) => a.nombre.length >= b.nombre.length ? a : b);
-    planLabel.textContent = widest.nombre;
-    requestAnimationFrame(() => {
-      if (window.innerWidth >= 640) {
-        planToggle.style.minWidth = planToggle.offsetWidth + 'px';
-      }
-      planLabel.textContent = plans[0].nombre;
-    });
+    widestPlanNombre = widest.nombre;
+    planLabel.textContent = plans[0].nombre;
+    document.fonts.ready.then(() => lockToggleWidth());
 
     planToggle.addEventListener('click', () => {
       planMenu.classList.contains('open') ? closeMenu() : openMenu();
@@ -491,8 +503,6 @@ if (navigator.mediaDevices?.getUserMedia) {
 }
 
 
-window.addEventListener('resize', () => {
-  if (window.innerWidth < 640) planToggle.style.minWidth = '';
-});
+window.addEventListener('resize', () => lockToggleWidth());
 
 loadPlans();
