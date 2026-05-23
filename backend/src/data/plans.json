@@ -22,65 +22,12 @@
       "clinica_esmeraldas",
       "clinica_riobamba"
     ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad", "oncologia"],
-    "tope_consultas_anuales": 12
-  },
-  {
-    "id": "salud-familiar",
-    "nombre": "Salud S.A. Familiar",
-    "aseguradora": "Salud S.A.",
-    "tier": "intermedio",
-    "prima_mensual": 75,
-    "deducible_anual": 200,
-    "cobertura": {
-      "consulta_general": 75,
-      "consulta_especialista": 65,
-      "examenes_laboratorio": 80,
-      "imagen_diagnostica": 70
-    },
-    "copago_minimo": 12,
-    "hospitales_red": [
-      "vozandes_quito",
-      "pichincha",
-      "internacional_quito",
-      "novaclinica",
-      "del_sol",
-      "clinica_guayaquil",
-      "clinica_ambato",
-      "clinica_riobamba",
-      "clinica_machala",
-      "clinica_manta",
-      "clinica_portoviejo",
-      "vozandes_shell"
+    "exclusiones": [
+      "medicina_estetica",
+      "tratamientos_experimentales",
+      "fertilidad",
+      "oncologia"
     ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad"],
-    "tope_consultas_anuales": 18
-  },
-  {
-    "id": "ecuasanitas-esencial",
-    "nombre": "Ecuasanitas Esencial",
-    "aseguradora": "Ecuasanitas",
-    "tier": "basico",
-    "prima_mensual": 55,
-    "deducible_anual": 250,
-    "cobertura": {
-      "consulta_general": 65,
-      "consulta_especialista": 55,
-      "examenes_laboratorio": 75,
-      "imagen_diagnostica": 65
-    },
-    "copago_minimo": 12,
-    "hospitales_red": [
-      "vozandes_quito",
-      "pichincha",
-      "internacional_quito",
-      "clinica_guayaquil",
-      "clinica_ambato",
-      "clinica_riobamba",
-      "clinica_portoviejo",
-      "vozandes_shell"
-    ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad", "oncologia"],
     "tope_consultas_anuales": 12
   },
   {
@@ -113,7 +60,9 @@
       "santa_ines",
       "monte_sinai_cuenca"
     ],
-    "exclusiones": ["medicina_estetica"],
+    "exclusiones": [
+      "medicina_estetica"
+    ],
     "tope_consultas_anuales": 24
   },
   {
@@ -151,35 +100,10 @@
       "clinica_manta",
       "clinica_portoviejo"
     ],
-    "exclusiones": ["medicina_estetica"],
-    "tope_consultas_anuales": null
-  },
-  {
-    "id": "bmi-esencial",
-    "nombre": "BMI Esencial",
-    "aseguradora": "BMI",
-    "tier": "basico",
-    "prima_mensual": 60,
-    "deducible_anual": 280,
-    "cobertura": {
-      "consulta_general": 65,
-      "consulta_especialista": 55,
-      "examenes_laboratorio": 72,
-      "imagen_diagnostica": 62
-    },
-    "copago_minimo": 15,
-    "hospitales_red": [
-      "pichincha",
-      "vozandes_quito",
-      "internacional_quito",
-      "clinica_guayaquil",
-      "clinica_ambato",
-      "clinica_loja",
-      "clinica_ibarra",
-      "vozandes_shell"
+    "exclusiones": [
+      "medicina_estetica"
     ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad", "oncologia"],
-    "tope_consultas_anuales": 12
+    "tope_consultas_anuales": null
   },
   {
     "id": "bmi-platinum",
@@ -226,32 +150,6 @@
     "tope_consultas_anuales": null
   },
   {
-    "id": "seguros-sucre-basico",
-    "nombre": "Seguros Sucre Básico",
-    "aseguradora": "Seguros Sucre",
-    "tier": "basico",
-    "prima_mensual": 38,
-    "deducible_anual": 350,
-    "cobertura": {
-      "consulta_general": 55,
-      "consulta_especialista": 45,
-      "examenes_laboratorio": 65,
-      "imagen_diagnostica": 55
-    },
-    "copago_minimo": 18,
-    "hospitales_red": [
-      "pichincha",
-      "vozandes_quito",
-      "clinica_guayaquil",
-      "clinica_ibarra",
-      "clinica_loja",
-      "clinica_esmeraldas",
-      "vozandes_shell"
-    ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad", "oncologia", "psiquiatria"],
-    "tope_consultas_anuales": 10
-  },
-  {
     "id": "seguros-sucre-familiar",
     "nombre": "Seguros Sucre Familiar",
     "aseguradora": "Seguros Sucre",
@@ -282,42 +180,11 @@
       "clinica_manta",
       "clinica_machala"
     ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales"],
-    "tope_consultas_anuales": 20
-  },
-  {
-    "id": "mapfre-salud-plus",
-    "nombre": "MAPFRE Salud Plus",
-    "aseguradora": "MAPFRE",
-    "tier": "medio-alto",
-    "prima_mensual": 115,
-    "deducible_anual": 75,
-    "cobertura": {
-      "consulta_general": 88,
-      "consulta_especialista": 82,
-      "examenes_laboratorio": 88,
-      "imagen_diagnostica": 83
-    },
-    "copago_minimo": 8,
-    "hospitales_red": [
-      "metropolitano",
-      "kennedy",
-      "axxis",
-      "vozandes_quito",
-      "alcívar",
-      "omni_hospital",
-      "monte_sinai",
-      "novaclinica",
-      "internacional_quito",
-      "santa_ines",
-      "monte_sinai_cuenca",
-      "clinica_ambato",
-      "clinica_riobamba",
-      "clinica_machala",
-      "clinica_manta"
+    "exclusiones": [
+      "medicina_estetica",
+      "tratamientos_experimentales"
     ],
-    "exclusiones": ["medicina_estetica"],
-    "tope_consultas_anuales": 30
+    "tope_consultas_anuales": 20
   },
   {
     "id": "mapfre-elite",
@@ -361,68 +228,5 @@
     ],
     "exclusiones": [],
     "tope_consultas_anuales": null
-  },
-  {
-    "id": "latina-salud-basico",
-    "nombre": "Latina Seguros Salud Básico",
-    "aseguradora": "Latina Seguros",
-    "tier": "basico",
-    "prima_mensual": 42,
-    "deducible_anual": 320,
-    "cobertura": {
-      "consulta_general": 60,
-      "consulta_especialista": 50,
-      "examenes_laboratorio": 68,
-      "imagen_diagnostica": 58
-    },
-    "copago_minimo": 15,
-    "hospitales_red": [
-      "vozandes_quito",
-      "pichincha",
-      "internacional_quito",
-      "clinica_guayaquil",
-      "clinica_ibarra",
-      "clinica_loja",
-      "clinica_ambato",
-      "vozandes_shell"
-    ],
-    "exclusiones": ["medicina_estetica", "tratamientos_experimentales", "fertilidad", "oncologia"],
-    "tope_consultas_anuales": 10
-  },
-  {
-    "id": "latina-salud-plus",
-    "nombre": "Latina Seguros Salud Plus",
-    "aseguradora": "Latina Seguros",
-    "tier": "intermedio",
-    "prima_mensual": 95,
-    "deducible_anual": 100,
-    "cobertura": {
-      "consulta_general": 85,
-      "consulta_especialista": 78,
-      "examenes_laboratorio": 88,
-      "imagen_diagnostica": 82
-    },
-    "copago_minimo": 8,
-    "hospitales_red": [
-      "metropolitano",
-      "kennedy",
-      "axxis",
-      "vozandes_quito",
-      "omni_hospital",
-      "alcívar",
-      "monte_sinai",
-      "novaclinica",
-      "internacional_quito",
-      "del_sol",
-      "santa_ines",
-      "monte_sinai_cuenca",
-      "clinica_ambato",
-      "clinica_riobamba",
-      "clinica_manta",
-      "clinica_machala",
-      "clinica_portoviejo"
-    ],
-    "exclusiones": ["medicina_estetica"],
-    "tope_consultas_anuales": 24
   }
 ]

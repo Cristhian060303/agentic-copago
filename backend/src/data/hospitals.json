@@ -23,7 +23,11 @@
       "urologia",
       "neumologia",
       "psiquiatria",
-      "reumatologia"
+      "reumatologia",
+      "otorrinolaringologia",
+      "psicologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 65,
@@ -51,7 +55,10 @@
       "endocrinologia",
       "neurologia",
       "urologia",
-      "neumologia"
+      "neumologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 50,
@@ -78,7 +85,9 @@
       "oftalmologia",
       "endocrinologia",
       "neurologia",
-      "urologia"
+      "urologia",
+      "otorrinolaringologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 40,
@@ -101,7 +110,8 @@
       "traumatologia",
       "gastroenterologia",
       "dermatologia",
-      "oftalmologia"
+      "oftalmologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 25,
@@ -125,7 +135,9 @@
       "traumatologia",
       "gastroenterologia",
       "dermatologia",
-      "endocrinologia"
+      "endocrinologia",
+      "otorrinolaringologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 35,
@@ -149,7 +161,9 @@
       "traumatologia",
       "gastroenterologia",
       "urologia",
-      "endocrinologia"
+      "endocrinologia",
+      "otorrinolaringologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 35,
@@ -180,7 +194,11 @@
       "urologia",
       "neumologia",
       "psiquiatria",
-      "reumatologia"
+      "reumatologia",
+      "otorrinolaringologia",
+      "psicologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 60,
@@ -208,7 +226,10 @@
       "neurologia",
       "urologia",
       "neumologia",
-      "oftalmologia"
+      "oftalmologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 50,
@@ -233,7 +254,8 @@
       "gastroenterologia",
       "dermatologia",
       "endocrinologia",
-      "urologia"
+      "urologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 40,
@@ -255,7 +277,8 @@
       "pediatria",
       "traumatologia",
       "gastroenterologia",
-      "dermatologia"
+      "dermatologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 22,
@@ -284,7 +307,11 @@
       "neurologia",
       "oncologia",
       "urologia",
-      "neumologia"
+      "neumologia",
+      "otorrinolaringologia",
+      "psicologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 60,
@@ -311,7 +338,10 @@
       "endocrinologia",
       "oftalmologia",
       "neurologia",
-      "urologia"
+      "urologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 48,
@@ -338,7 +368,10 @@
       "endocrinologia",
       "oftalmologia",
       "neurologia",
-      "urologia"
+      "urologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 45,
@@ -362,7 +395,8 @@
       "traumatologia",
       "gastroenterologia",
       "dermatologia",
-      "endocrinologia"
+      "endocrinologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 35,
@@ -383,7 +417,8 @@
       "ginecologia",
       "pediatria",
       "traumatologia",
-      "gastroenterologia"
+      "gastroenterologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 30,
@@ -405,7 +440,10 @@
       "endocrinologia",
       "ginecologia",
       "neurologia",
-      "neumologia"
+      "neumologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 45,
@@ -428,7 +466,10 @@
       "ginecologia",
       "neurologia",
       "neumologia",
-      "urologia"
+      "urologia",
+      "otorrinolaringologia",
+      "nutricion",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 45,
@@ -450,7 +491,8 @@
       "pediatria",
       "traumatologia",
       "gastroenterologia",
-      "dermatologia"
+      "dermatologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 30,
@@ -474,7 +516,8 @@
       "traumatologia",
       "gastroenterologia",
       "dermatologia",
-      "endocrinologia"
+      "endocrinologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 30,
@@ -495,7 +538,8 @@
       "ginecologia",
       "pediatria",
       "traumatologia",
-      "gastroenterologia"
+      "gastroenterologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 20,
@@ -517,7 +561,8 @@
       "pediatria",
       "traumatologia",
       "gastroenterologia",
-      "dermatologia"
+      "dermatologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 22,
@@ -537,7 +582,8 @@
       "medicina_general",
       "ginecologia",
       "pediatria",
-      "traumatologia"
+      "traumatologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 18,
@@ -561,7 +607,8 @@
       "traumatologia",
       "gastroenterologia",
       "dermatologia",
-      "endocrinologia"
+      "endocrinologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 28,
@@ -584,7 +631,8 @@
       "traumatologia",
       "gastroenterologia",
       "dermatologia",
-      "cardiologia"
+      "cardiologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 28,
@@ -607,7 +655,8 @@
       "pediatria",
       "traumatologia",
       "gastroenterologia",
-      "dermatologia"
+      "dermatologia",
+      "medicina_interna"
     ],
     "precios": {
       "consulta_general": 28,
