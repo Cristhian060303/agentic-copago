@@ -4,6 +4,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import agentRouter from './routes/agent.js';
 import plansRouter from './routes/plans.js';
+import voiceRouter from './routes/voice.js';
 import hospitalsRouter from './routes/hospitals.js';
 
 const app = express();
@@ -11,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || '*';
 
 app.use(cors({ origin: FRONTEND_ORIGIN }));
-app.use(express.json({ limit: '10kb' }));
+app.use(express.json({ limit: '4mb' }));
 
 app.use('/api/', rateLimit({
   windowMs: 60_000,
@@ -23,10 +24,10 @@ app.use('/api/', rateLimit({
 
 app.use('/api/agent', agentRouter);
 app.use('/api/plans', plansRouter);
+app.use('/api/voice', voiceRouter);
+app.use('/api/hospitals', hospitalsRouter);
 
 app.get('/health', (_req, res) => res.json({ ok: true, ts: Date.now() }));
-
-app.use('/api/hospitals', hospitalsRouter);
 
 app.use((err, _req, res, _next) => {
   console.error('[unhandled]', err?.message);

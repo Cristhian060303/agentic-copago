@@ -19,7 +19,7 @@ Hoy un paciente tarda horas en llamar al call center del seguro para saber qué 
 2. **Desglose visible** — el paciente ve `precio base − cobertura = copago` por cada hospital.
 3. **Detección de urgencia** — si el síntoma es grave, el agente recomienda emergencias antes que consulta.
 4. **Disclaimer médico** — visible siempre, no reemplaza consulta médica ni autorización formal.
-5. **Modo voz** — Web Speech API para accesibilidad.
+5. **Notas de voz** — el paciente graba un audio; Gemini lo transcribe y procesa directamente, sin depender de servicios externos de reconocimiento de voz.
 
 ## Stack
 
@@ -65,6 +65,9 @@ App disponible en `http://localhost:5173`.
 - `GET  /api/plans` — lista de planes de seguro disponibles
 - `POST /api/agent` — envía un mensaje al agente
   - Body: `{ mensaje, plan_id, historial }`
+  - Retorna: `{ clasificacion, estimacion }`
+- `POST /api/voice` — envía una nota de voz al agente
+  - Body: `{ audio (base64), mime_type, plan_id, historial }`
   - Retorna: `{ clasificacion, estimacion }`
 - `GET  /health` — healthcheck
 
