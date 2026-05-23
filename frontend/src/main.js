@@ -1,4 +1,4 @@
-import { sendMessage, fetchPlans } from './lib/api.js';
+import { sendMessage, sendVoiceMessage, fetchPlans } from './lib/api.js';
 
 const chatEl = document.getElementById('chat');
 const formEl = document.getElementById('chat-form');
@@ -9,8 +9,15 @@ const planToggle = document.getElementById('plan-toggle');
 const planLabel = document.getElementById('plan-label');
 const planMenu = document.getElementById('plan-menu');
 const planWrapper = document.getElementById('plan-dropdown-wrapper');
+const recordingIndicator = document.getElementById('recording-indicator');
+const recordingTimerEl = document.getElementById('recording-timer');
+const audioPreviewEl = document.getElementById('audio-preview');
+const audioPlayBtn = document.getElementById('audio-play-btn');
+const audioProgressFill = document.getElementById('audio-progress-fill');
+const audioPreviewTime = document.getElementById('audio-preview-time');
+const audioDeleteBtn = document.getElementById('audio-delete-btn');
 
-const state = { history: [], planId: null };
+const state = { history: [], planId: null, pendingAudio: null };
 
 const C = {
   midnight: '#0e0e52',
@@ -19,6 +26,13 @@ const C = {
   cerulean: '#449dd1',
   sky:      '#78c0e0',
 };
+
+function formatDuration(secs) {
+  return `${Math.floor(secs / 60)}:${String(Math.floor(secs) % 60).padStart(2, '0')}`;
+}
+
+const PLAY_ICON  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="5 3 19 12 5 21"/></svg>`;
+const PAUSE_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="white" stroke="none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
 
 function escapeHtml(s) {
   return String(s)
@@ -265,6 +279,7 @@ async function loadPlans() {
 
 formEl.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (state.pendingAudio) { window.__submitVoiceMessage?.(); return; }
   const msg = inputEl.value.trim();
   if (!msg || !state.planId) return;
 
@@ -295,29 +310,186 @@ formEl.addEventListener('submit', async (e) => {
   }
 });
 
-// Web Speech API
-const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-if (SR) {
-  const rec = new SR();
-  rec.lang = 'es-EC';
-  rec.interimResults = false;
-  rec.continuous = false;
+function appendVoiceBubble(blobUrl, duration) {
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-bubble flex justify-end';
+  const id = `vb-${Date.now()}`;
+  wrap.innerHTML = `
+    <div class="text-white rounded-2xl rounded-tr-sm px-3 py-2.5 shadow-sm flex items-center gap-2.5"
+         style="background:${C.royal}; min-width:180px; max-width:260px">
+      <button type="button" id="${id}-btn"
+              class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-white/20 hover:bg-white/30 transition-colors">
+        ${PLAY_ICON}
+      </button>
+      <div class="flex-1 flex flex-col gap-1.5 min-w-0">
+        <div class="relative h-1 bg-white/30 rounded-full overflow-hidden">
+          <div id="${id}-fill" class="h-full bg-white absolute left-0 top-0" style="width:0%;transition:width 0.15s linear"></div>
+        </div>
+        <span id="${id}-time" class="text-xs font-mono" style="color:rgba(255,255,255,0.75)">
+          0:00 / ${formatDuration(duration)}
+        </span>
+      </div>
+    </div>`;
+  chatEl.appendChild(wrap);
+  chatEl.scrollTop = chatEl.scrollHeight;
 
-  voiceBtn.addEventListener('click', () => {
-    try {
-      rec.start();
-      voiceBtn.classList.add('listening');
-    } catch { /* ya escuchando */ }
+  const audio = new Audio(blobUrl);
+  const btn  = document.getElementById(`${id}-btn`);
+  const fill = document.getElementById(`${id}-fill`);
+  const timeEl = document.getElementById(`${id}-time`);
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) { audio.play(); btn.innerHTML = PAUSE_ICON; }
+    else { audio.pause(); btn.innerHTML = PLAY_ICON; }
   });
-  rec.onresult = (e) => {
-    inputEl.value = e.results[0][0].transcript;
-    inputEl.focus();
+  audio.ontimeupdate = () => {
+    if (!audio.duration) return;
+    fill.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+    timeEl.textContent = `${formatDuration(audio.currentTime)} / ${formatDuration(duration)}`;
   };
-  rec.onend = () => voiceBtn.classList.remove('listening');
-  rec.onerror = () => voiceBtn.classList.remove('listening');
+  audio.onended = () => { btn.innerHTML = PLAY_ICON; fill.style.width = '0%'; timeEl.textContent = `0:00 / ${formatDuration(duration)}`; };
+}
+
+// MediaRecorder — graba audio y lo envía directo a Gemini
+if (navigator.mediaDevices?.getUserMedia) {
+  let mediaRecorder = null;
+  let audioChunks = [];
+  let recordingInterval = null;
+  let recordingSeconds = 0;
+  let previewAudio = null;
+
+  const micIcon  = voiceBtn.innerHTML;
+  const stopIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>`;
+
+  function enterRecordingState() {
+    inputEl.style.display = 'none';
+    recordingIndicator.style.display = 'flex';
+    audioPreviewEl.style.display = 'none';
+    voiceBtn.classList.add('listening');
+    voiceBtn.innerHTML = stopIcon;
+    sendBtn.disabled = true;
+    recordingSeconds = 0;
+    recordingTimerEl.textContent = '0:00';
+    recordingInterval = setInterval(() => {
+      recordingSeconds++;
+      recordingTimerEl.textContent = formatDuration(recordingSeconds);
+    }, 1000);
+  }
+
+  function enterPreviewState(blob, mimeType) {
+    clearInterval(recordingInterval);
+    inputEl.style.display = 'none';
+    recordingIndicator.style.display = 'none';
+    audioPreviewEl.style.display = 'flex';
+    voiceBtn.style.display = 'none';
+    voiceBtn.classList.remove('listening');
+    voiceBtn.innerHTML = micIcon;
+    sendBtn.disabled = false;
+
+    state.pendingAudio = { blob, mimeType, duration: recordingSeconds };
+    audioPreviewTime.textContent = formatDuration(recordingSeconds);
+    audioProgressFill.style.width = '0%';
+    audioPlayBtn.innerHTML = PLAY_ICON;
+
+    if (previewAudio) { previewAudio.pause(); previewAudio = null; }
+    previewAudio = new Audio(URL.createObjectURL(blob));
+    previewAudio.ontimeupdate = () => {
+      if (!previewAudio.duration) return;
+      audioProgressFill.style.width = `${(previewAudio.currentTime / previewAudio.duration) * 100}%`;
+      audioPreviewTime.textContent = `${formatDuration(previewAudio.currentTime)} / ${formatDuration(recordingSeconds)}`;
+    };
+    previewAudio.onended = () => {
+      audioPlayBtn.innerHTML = PLAY_ICON;
+      audioProgressFill.style.width = '0%';
+      audioPreviewTime.textContent = formatDuration(recordingSeconds);
+    };
+  }
+
+  function exitPreviewState() {
+    if (previewAudio) { previewAudio.pause(); previewAudio = null; }
+    state.pendingAudio = null;
+    inputEl.style.display = '';
+    audioPreviewEl.style.display = 'none';
+    voiceBtn.style.display = '';
+    sendBtn.disabled = false;
+    audioPlayBtn.innerHTML = PLAY_ICON;
+    audioProgressFill.style.width = '0%';
+  }
+
+  voiceBtn.addEventListener('click', async () => {
+    if (mediaRecorder?.state === 'recording') {
+      mediaRecorder.stop();
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
+      mediaRecorder.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        const mimeType = (mediaRecorder.mimeType || 'audio/webm').split(';')[0];
+        enterPreviewState(new Blob(audioChunks, { type: mimeType }), mimeType);
+      };
+      mediaRecorder.start();
+      enterRecordingState();
+    } catch {
+      inputEl.placeholder = 'No se pudo acceder al micrófono';
+      setTimeout(() => { inputEl.placeholder = 'Describe tu síntoma…'; }, 3000);
+    }
+  });
+
+  audioPlayBtn.addEventListener('click', () => {
+    if (!previewAudio) return;
+    if (previewAudio.paused) { previewAudio.play(); audioPlayBtn.innerHTML = PAUSE_ICON; }
+    else { previewAudio.pause(); audioPlayBtn.innerHTML = PLAY_ICON; }
+  });
+
+  audioDeleteBtn.addEventListener('click', () => { exitPreviewState(); inputEl.focus(); });
+
+  async function submitVoiceMessage() {
+    if (!state.pendingAudio) return;
+    const { blob, mimeType, duration } = state.pendingAudio;
+    const blobUrl = URL.createObjectURL(blob);
+    exitPreviewState();
+
+    appendVoiceBubble(blobUrl, duration);
+    state.history.push({ role: 'user', text: '[nota de voz]' });
+    inputEl.disabled = true;
+    sendBtn.disabled = true;
+    voiceBtn.disabled = true;
+    appendLoading();
+
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        const data = await sendVoiceMessage(reader.result.split(',')[1], mimeType, state.planId, state.history.slice(0, -1));
+        removeLoading();
+        const { clasificacion, estimacion } = data;
+        appendBubble('agent', clasificacion.mensaje_usuario);
+        state.history.push({ role: 'model', text: clasificacion.mensaje_usuario });
+        appendUrgency(clasificacion.urgencia);
+        if (estimacion) appendEstimate(estimacion);
+      } catch {
+        removeLoading();
+        appendBubble('agent', 'No pude procesar la nota de voz. Intenta de nuevo.');
+      } finally {
+        inputEl.disabled = false;
+        sendBtn.disabled = false;
+        voiceBtn.disabled = false;
+        inputEl.focus();
+      }
+    };
+    reader.readAsDataURL(blob);
+  }
+
+  // expose so the form submit handler can call it
+  window.__submitVoiceMessage = submitVoiceMessage;
+
 } else {
   voiceBtn.style.display = 'none';
 }
+
 
 window.addEventListener('resize', () => {
   if (window.innerWidth < 640) planToggle.style.minWidth = '';

@@ -43,6 +43,45 @@ function client() {
   return _client;
 }
 
+export async function classifySymptomFromAudio(audioBase64, mimeType, history = []) {
+  const model = client().getGenerativeModel({
+    model: process.env.GEMINI_MODEL || 'gemini-flash-lite-latest',
+    systemInstruction: SYSTEM_PROMPT,
+    generationConfig: {
+      responseMimeType: 'application/json',
+      temperature: 0.3,
+      maxOutputTokens: 512
+    }
+  });
+
+  const contents = [
+    ...history.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
+    {
+      role: 'user',
+      parts: [
+        { inlineData: { mimeType, data: audioBase64 } },
+        { text: 'El paciente ha enviado una nota de voz describiendo sus síntomas. Analiza el audio y responde con el JSON solicitado.' }
+      ]
+    }
+  ];
+
+  const result = await model.generateContent({ contents });
+  const text = result.response.text();
+
+  let parsed;
+  try { parsed = JSON.parse(text); }
+  catch { throw new Error('respuesta del LLM no es JSON válido'); }
+
+  return {
+    necesita_mas_info: !!parsed.necesita_mas_info,
+    pregunta_clarificadora: parsed.pregunta_clarificadora ?? null,
+    especialidad_sugerida: parsed.especialidad_sugerida ?? null,
+    confianza: typeof parsed.confianza === 'number' ? parsed.confianza : 0,
+    urgencia: ['baja', 'media', 'alta', 'emergencia'].includes(parsed.urgencia) ? parsed.urgencia : 'baja',
+    mensaje_usuario: parsed.mensaje_usuario ?? 'Cuéntame un poco más sobre lo que sientes.'
+  };
+}
+
 export async function classifySymptom(userMessage, history = []) {
   const model = client().getGenerativeModel({
     model: process.env.GEMINI_MODEL || 'gemini-flash-lite-latest',
