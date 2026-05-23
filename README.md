@@ -26,7 +26,7 @@ Hoy un paciente tarda horas en llamar al call center del seguro para saber qué 
 | Capa | Tecnología |
 |---|---|
 | Backend | Node.js + Express |
-| LLM | Gemini 2.0 Flash (JSON mode) |
+| LLM | Gemini Flash Lite (JSON mode, configurable vía `GEMINI_MODEL`) |
 | Frontend | Vite + Vanilla JS + Tailwind (CDN) |
 | Datos | JSON estático (planes, hospitales, especialidades) |
 | Despliegue | Render (back) + Vercel (front) |
@@ -43,6 +43,7 @@ Hoy un paciente tarda horas en llamar al call center del seguro para saber qué 
 cd backend
 cp .env.example .env
 # edita .env y pega tu GEMINI_API_KEY
+# (opcional) GEMINI_MODEL=gemini-flash-lite-latest  — default si se omite
 npm install
 npm run dev
 ```
