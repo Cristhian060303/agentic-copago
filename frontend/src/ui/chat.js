@@ -140,11 +140,11 @@ export function appendEstimate(estimacion) {
       <div class="px-4 sm:px-5 py-3 flex items-center justify-between"
            style="background: var(--royal)">
         <div>
-          <p class="text-xs uppercase tracking-wide font-medium" style="color:${C.sky}">${t("estimate.specialty")}</p>
+          <p class="text-xs uppercase tracking-wide font-medium" style="color:rgba(255,255,255,0.75)">${t("estimate.specialty")}</p>
           <h3 class="text-white font-bold text-base sm:text-lg">${escapeHtml(formatEspecialidad(estimacion.especialidad))}</h3>
         </div>
         <div class="text-right">
-          <p class="text-xs" style="color:${C.sky}">${t("estimate.yourPlan")}</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.75)">${t("estimate.yourPlan")}</p>
           <p class="text-white text-xs sm:text-sm font-semibold leading-tight max-w-[120px] sm:max-w-none">
             ${escapeHtml(estimacion.plan.nombre)}
           </p>
