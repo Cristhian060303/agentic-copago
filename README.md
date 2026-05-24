@@ -22,6 +22,7 @@ Hoy un paciente tarda horas en llamar al call center del seguro para saber qué 
 5. **Notas de voz** — el paciente graba un audio; Gemini lo transcribe y procesa directamente, sin servicios externos de STT.
 6. **Soporte multiidioma (ES / EN)** — el agente responde en el idioma seleccionado; la interfaz entera cambia de idioma sin recargar el estado.
 7. **Historial de sesiones** — las conversaciones se persisten en `localStorage`; el paciente puede retomar o eliminar cualquier sesión anterior desde el drawer lateral.
+8. **Envío de imágenes** — el paciente puede adjuntar una foto del síntoma; Gemini la analiza junto con el texto para una clasificación más precisa.
 
 ## Stack
 
@@ -72,6 +73,9 @@ App disponible en `http://localhost:5173`.
   - Retorna: `{ clasificacion, estimacion }`
 - `POST /api/voice` — envía una nota de voz al agente
   - Body: `{ audio (base64), mime_type, plan_id, historial, lang? }`
+  - Retorna: `{ clasificacion, estimacion }`
+- `POST /api/image` — envía una imagen al agente
+  - Body: `{ image (base64), mime_type, plan_id, historial, lang? }`
   - Retorna: `{ clasificacion, estimacion }`
 - `GET  /health` — healthcheck
 
