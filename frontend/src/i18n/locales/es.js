@@ -11,7 +11,7 @@ export default {
     placeholder: "Describe tu síntoma…",
     send: "Enviar",
     welcome:
-      "¡Hola! Soy <strong style=\"color:#0e0e52\">CopagoIA</strong>. Cuéntame qué síntoma o molestia tienes y te diré a qué especialista acudir y <strong>cuánto pagarás</strong> en cada hospital de tu red.",
+      "¡Hola! Soy <strong style=\"color:var(--text-accent)\">CopagoIA</strong>. Cuéntame qué síntoma o molestia tienes y te diré a qué especialista acudir y <strong>cuánto pagarás</strong> en cada hospital de tu red.",
     welcomeHint: "Ejemplo: &ldquo;tengo dolor en el pecho desde ayer&rdquo;",
     error: "Tuve un problema procesando tu mensaje. Intenta de nuevo en unos segundos.",
     voiceError: "No pude procesar la nota de voz. Intenta de nuevo.",
@@ -53,6 +53,9 @@ export default {
     swipeHint: "← desliza para ver más →",
     disclaimer:
       "Esta es una estimación informativa basada en aranceles referenciales y la configuración de tu plan. No constituye autorización formal del seguro ni reemplaza una consulta médica. Confirma con tu aseguradora antes de la atención.",
+  },
+  theme: {
+    toggle: "Cambiar tema",
   },
   urgency: {
     label: "URGENTE",

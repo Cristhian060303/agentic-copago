@@ -1,5 +1,6 @@
 import { state, LS_CHAT } from "./store.js";
 import { t, getLang, setLang, applyTranslations } from "./i18n/index.js";
+import { getTheme, applyTheme, toggleTheme } from "./theme.js";
 import { sendMessage } from "./lib/api.js";
 import {
   chatEl,
@@ -12,7 +13,7 @@ import {
 } from "./ui/chat.js";
 import { saveChatLog, archiveCurrentSession } from "./session.js";
 import { loadPlans, lockToggleWidth } from "./ui/plan.js";
-import { initDrawer } from "./ui/drawer.js";
+import { initDrawer, renderDrawer } from "./ui/drawer.js";
 import { initVoice } from "./voice.js";
 
 const formEl = document.getElementById("chat-form");
@@ -31,6 +32,8 @@ formEl.addEventListener("submit", async (e) => {
   appendBubble("user", msg);
   state.history.push({ role: "user", text: msg });
   state.chatLog.push({ type: "user_text", text: msg });
+  saveChatLog();
+  renderDrawer();
   inputEl.value = "";
   inputEl.disabled = true;
   sendBtn.disabled = true;
@@ -58,6 +61,7 @@ formEl.addEventListener("submit", async (e) => {
       state.chatLog.push({ type: "estimate", estimacion });
     }
     saveChatLog();
+    renderDrawer();
   } catch {
     removeLoading();
     appendBubble(
@@ -85,6 +89,7 @@ document.getElementById("nueva-consulta-btn").addEventListener("click", () => {
   inputEl.disabled = false;
   sendBtn.disabled = false;
   inputEl.focus();
+  renderDrawer();
 });
 
 window.addEventListener("resize", () => lockToggleWidth());
@@ -96,6 +101,17 @@ document.getElementById("lang-es").classList.toggle("active", currentLang === "e
 document.getElementById("lang-en").classList.toggle("active", currentLang === "en");
 document.getElementById("lang-es").addEventListener("click", () => setLang("es"));
 document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
+
+applyTheme(getTheme());
+function syncThemeIcons(theme) {
+  document.getElementById("theme-icon-moon").style.display = theme === "dark" ? "none" : "block";
+  document.getElementById("theme-icon-sun").style.display = theme === "dark" ? "block" : "none";
+}
+syncThemeIcons(getTheme());
+document.getElementById("theme-toggle-btn").addEventListener("click", () => {
+  const next = toggleTheme();
+  syncThemeIcons(next);
+});
 
 initVoice();
 initDrawer();

@@ -47,7 +47,8 @@ export function appendBubble(role, text) {
       "chat-bubble flex gap-2.5 self-start max-w-xs sm:max-w-sm md:max-w-md";
     wrap.innerHTML = `
       ${botAvatarHtml()}
-      <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm border border-slate-200 text-slate-800 text-sm leading-relaxed">
+      <div class="rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm text-sm leading-relaxed"
+           style="background:var(--bg-bot-bubble); color:var(--text-bot-bubble); border:1px solid var(--border-card)">
         ${escapeHtml(text)}
       </div>`;
   }
@@ -61,7 +62,8 @@ export function appendLoading() {
   wrap.className = "chat-bubble flex gap-2.5 self-start";
   wrap.innerHTML = `
     ${botAvatarHtml()}
-    <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm border border-slate-200">
+    <div class="rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm"
+         style="background:var(--bg-bot-bubble); border:1px solid var(--border-card)">
       <div class="loader-dots"><span></span><span></span><span></span></div>
     </div>`;
   chatEl.appendChild(wrap);
@@ -106,11 +108,11 @@ export function appendEstimate(estimacion) {
   const rows = estimacion.hospitales
     .map(
       (h, i) => `
-    <tr class="border-b border-slate-100" style="${i === 0 ? `background:${C.sky}18` : ""}">
+    <tr style="border-bottom:1px solid var(--border-subtle); ${i === 0 ? "background:var(--sky-alpha)" : ""}">
       <td class="py-3 pl-2 pr-3">
-        <div class="font-semibold text-slate-800 text-sm">${escapeHtml(h.nombre)}</div>
+        <div class="font-semibold text-sm" style="color:var(--text-primary)">${escapeHtml(h.nombre)}</div>
         <div class="flex flex-wrap gap-x-2 mt-0.5">
-          <span class="text-xs text-slate-500">${escapeHtml(h.ciudad)}</span>
+          <span class="text-xs" style="color:var(--text-secondary)">${escapeHtml(h.ciudad)}</span>
           <span class="text-xs text-yellow-500 flex items-center gap-0.5">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             ${h.rating}
@@ -122,9 +124,9 @@ export function appendEstimate(estimacion) {
           }
         </div>
       </td>
-      <td class="text-right text-slate-600 text-sm col-hide-xs">$${h.desglose.precio_base}</td>
-      <td class="text-right text-slate-600 text-sm col-hide-xs">${h.desglose.cobertura_pct}%</td>
-      <td class="text-right pr-2 font-bold text-sm whitespace-nowrap" style="color:${C.midnight}">
+      <td class="text-right text-sm col-hide-xs" style="color:var(--text-secondary)">$${h.desglose.precio_base}</td>
+      <td class="text-right text-sm col-hide-xs" style="color:var(--text-secondary)">${h.desglose.cobertura_pct}%</td>
+      <td class="text-right pr-2 font-bold text-sm whitespace-nowrap" style="color:var(--text-accent)">
         $${h.desglose.copago}
       </td>
     </tr>
@@ -133,7 +135,7 @@ export function appendEstimate(estimacion) {
     .join("");
 
   wrap.innerHTML = `
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="rounded-2xl shadow-sm overflow-hidden" style="background:var(--bg-card); border:1px solid var(--border-card)">
       <div class="px-4 sm:px-5 py-3 flex items-center justify-between"
            style="background: linear-gradient(135deg, ${C.midnight} 0%, ${C.indigo} 60%, ${C.royal} 100%)">
         <div>
@@ -152,7 +154,7 @@ export function appendEstimate(estimacion) {
           top
             ? `
           <div class="mb-4 p-3 sm:p-4 rounded-xl border flex items-start gap-3"
-               style="background:${C.sky}18; border-color:${C.cerulean}50">
+               style="background:var(--sky-alpha); border-color:var(--cerulean-alpha)">
             <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm"
                  style="background:${C.royal}">
               <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -161,9 +163,9 @@ export function appendEstimate(estimacion) {
               </svg>
             </div>
             <div>
-              <p class="text-xs font-bold uppercase tracking-wide" style="color:${C.indigo}">${t("estimate.cheapest")}</p>
-              <p class="font-bold text-sm sm:text-base" style="color:${C.midnight}">${escapeHtml(top.nombre)}</p>
-              <p class="text-sm" style="color:${C.indigo}">
+              <p class="text-xs font-bold uppercase tracking-wide" style="color:var(--text-accent-secondary)">${t("estimate.cheapest")}</p>
+              <p class="font-bold text-sm sm:text-base" style="color:var(--text-accent)">${escapeHtml(top.nombre)}</p>
+              <p class="text-sm" style="color:var(--text-accent-secondary)">
                 ${t("estimate.youPay")} <strong>$${top.desglose.copago}</strong>
                 ${ahorro > 0 ? ` · ${t("estimate.youSave")} <strong>$${ahorro}</strong> ${t("estimate.vs")}` : ""}
               </p>
@@ -171,7 +173,7 @@ export function appendEstimate(estimacion) {
           </div>
         `
             : `
-          <div class="mb-4 p-3 bg-slate-100 rounded-xl text-sm text-slate-600">
+          <div class="mb-4 p-3 rounded-xl text-sm" style="background:var(--border-subtle); color:var(--text-secondary)">
             ${t("estimate.noHospital")}
           </div>
         `
@@ -183,20 +185,20 @@ export function appendEstimate(estimacion) {
             <table class="w-full text-sm border-collapse min-w-[260px] estimate-table">
               <thead>
                 <tr class="border-b-2" style="border-color:${C.sky}">
-                  <th class="text-left pb-2 pl-2 text-xs font-bold uppercase tracking-wide" style="color:${C.midnight}">${t("estimate.hospital")}</th>
-                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 col-hide-xs">${t("estimate.price")}</th>
-                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 col-hide-xs">${t("estimate.coverage")}</th>
+                  <th class="text-left pb-2 pl-2 text-xs font-bold uppercase tracking-wide" style="color:var(--text-accent)">${t("estimate.hospital")}</th>
+                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide col-hide-xs" style="color:var(--text-secondary)">${t("estimate.price")}</th>
+                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide col-hide-xs" style="color:var(--text-secondary)">${t("estimate.coverage")}</th>
                   <th class="text-right pb-2 pr-2 text-xs font-bold uppercase tracking-wide" style="color:${C.royal}">${t("estimate.copago")}</th>
                 </tr>
               </thead>
               <tbody>${rows}</tbody>
             </table>
           </div>
-          <p class="text-xs text-slate-400 mt-1 text-center sm:hidden">${t("estimate.swipeHint")}</p>
+          <p class="text-xs mt-1 text-center sm:hidden" style="color:var(--text-muted)">${t("estimate.swipeHint")}</p>
         `
             : ""
         }
-        <p class="text-xs text-slate-500 mt-4 italic leading-relaxed border-t border-slate-100 pt-3">
+        <p class="text-xs mt-4 italic leading-relaxed pt-3" style="color:var(--text-secondary); border-top:1px solid var(--border-subtle)">
           ${t("estimate.disclaimer")}
         </p>
       </div>
@@ -289,9 +291,10 @@ export function createWelcomeBubble() {
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
       </svg>
     </div>
-    <div class="bg-white rounded-2xl rounded-tl-sm p-4 shadow-sm border border-slate-200">
-      <p class="text-slate-800 text-sm leading-relaxed">${t("chat.welcome")}</p>
-      <p class="text-xs text-slate-500 mt-2 italic">${t("chat.welcomeHint")}</p>
+    <div class="rounded-2xl rounded-tl-sm p-4 shadow-sm"
+         style="background:var(--bg-bot-bubble); border:1px solid var(--border-card)">
+      <p class="text-sm leading-relaxed" style="color:var(--text-bot-bubble)">${t("chat.welcome")}</p>
+      <p class="text-xs mt-2 italic" style="color:var(--text-secondary)">${t("chat.welcomeHint")}</p>
     </div>`;
   return wrap;
 }

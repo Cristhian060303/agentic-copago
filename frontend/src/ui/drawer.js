@@ -77,14 +77,24 @@ function createDrawerDOM() {
         </svg>
         <h2 class="font-bold text-white text-sm tracking-tight">${t("drawer.title")}</h2>
       </div>
-      <button id="history-close-btn" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
-              style="color: #78c0e0" aria-label="Cerrar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
+      <div class="flex items-center gap-1">
+        <button id="drawer-new-chat-btn" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+                style="color: #78c0e0" aria-label="${t("header.newChat")}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </button>
+        <button id="history-close-btn" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+                style="color: #78c0e0" aria-label="Cerrar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
     </div>
     <ul id="history-list" class="flex-1 overflow-y-auto py-1" role="list"></ul>
     <div class="px-4 py-3 flex-shrink-0"
@@ -114,6 +124,7 @@ export function openDrawer() {
 }
 
 export function closeDrawer() {
+  if (window.innerWidth >= 768) return;
   historyDrawer.classList.remove("open");
   historyOverlay.classList.remove("open");
 }
@@ -173,7 +184,7 @@ export function renderDrawer() {
   historyList.querySelectorAll("button[data-session-id]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const sid = btn.dataset.sessionId;
-      if (sid === state.currentSessionId) { closeDrawer(); return; }
+      if (sid === state.currentSessionId) { if (window.innerWidth < 768) closeDrawer(); return; }
       loadHistorySession(sid);
     });
   });
@@ -236,16 +247,22 @@ export function loadHistorySession(sessionId) {
   }
 
   replayLog(session.chatLog);
-  closeDrawer();
+  if (window.innerWidth < 768) closeDrawer();
   document.getElementById("chat-input").focus();
+}
+
+function triggerNewChat() {
+  document.getElementById("nueva-consulta-btn").click();
 }
 
 export function initDrawer() {
   createDrawerDOM();
   createModalDOM();
+  renderDrawer();
 
   document.getElementById("history-btn").addEventListener("click", openDrawer);
   document.getElementById("history-close-btn").addEventListener("click", closeDrawer);
+  document.getElementById("drawer-new-chat-btn").addEventListener("click", triggerNewChat);
   historyOverlay.addEventListener("click", closeDrawer);
 
   document.getElementById("history-clear-btn").addEventListener("click", async () => {

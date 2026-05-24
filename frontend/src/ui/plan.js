@@ -3,6 +3,7 @@ import { t } from "../i18n/index.js";
 import { escapeHtml } from "./chat.js";
 import { fetchPlans } from "../lib/api.js";
 import { restoreSession } from "../session.js";
+import { renderDrawer } from "./drawer.js";
 
 const planToggle = document.getElementById("plan-toggle");
 const planLabel = document.getElementById("plan-label");
@@ -83,6 +84,7 @@ export async function loadPlans() {
     });
 
     restoreSession(plans);
+    renderDrawer();
   } catch (e) {
     planLabel.textContent = t("header.noConnection");
     console.error(e);

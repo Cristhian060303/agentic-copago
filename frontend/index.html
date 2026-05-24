@@ -12,6 +12,11 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233943b7'/><line x1='50' y1='20' x2='50' y2='80' stroke='white' stroke-width='14' stroke-linecap='round'/><line x1='20' y1='50' x2='80' y2='50' stroke='white' stroke-width='14' stroke-linecap='round'/></svg>"
     />
+    <script>
+      var __t = localStorage.getItem("copago_theme");
+      if (__t === "dark" || (!__t && matchMedia("(prefers-color-scheme:dark)").matches))
+        document.documentElement.classList.add("dark");
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -20,10 +25,11 @@
     />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
-  <body class="bg-slate-100 antialiased">
+  <body class="antialiased" style="background: var(--bg-page)">
+    <div id="app-column">
     <header
       class="flex-shrink-0 sticky top-0 z-20 shadow-lg px-4 sm:px-6 py-3"
-      style="background: linear-gradient(to right, #0e0e52, #150578)"
+      style="background: linear-gradient(to right, var(--bg-header-from), var(--bg-header-to))"
     >
       <div class="max-w-3xl mx-auto flex items-center justify-between gap-3">
         <div class="flex items-center gap-3 flex-1 min-w-0">
@@ -33,7 +39,7 @@
             title="Consultas recientes"
             aria-label="Consultas recientes"
             class="p-1.5 rounded-xl transition-colors flex-shrink-0 hover:bg-white/10"
-            style="color: #78c0e0"
+            style="color: var(--sky)"
           >
             <svg
               width="19"
@@ -52,7 +58,7 @@
           </button>
           <div
             class="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center shadow-md flex-shrink-0"
-            style="background: #3943b7; border: 2px solid #449dd160"
+            style="background: var(--royal); border: 2px solid var(--cerulean-alpha)"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -74,7 +80,7 @@
             >
               CopagoIA
             </h1>
-            <p class="text-xs leading-tight truncate" style="color: #78c0e0"
+            <p class="text-xs leading-tight truncate" style="color: var(--sky)"
                data-i18n="header.subtitle">
               Powered by TDCDev · hackIAthon 2026
             </p>
@@ -83,12 +89,39 @@
         <div class="flex items-center gap-3 flex-shrink-0">
           <button
             type="button"
+            id="theme-toggle-btn"
+            data-i18n-title="theme.toggle"
+            title="Cambiar tema"
+            aria-label="Cambiar tema"
+            class="p-1.5 rounded-xl transition-colors flex-shrink-0 hover:bg-white/10"
+            style="color: var(--sky)"
+          >
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="display:none">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+          <button
+            type="button"
             id="nueva-consulta-btn"
             data-i18n-title="header.newChat"
             title="Nueva consulta"
             aria-label="Nueva consulta"
             class="p-1.5 rounded-xl transition-colors flex-shrink-0 hover:bg-white/10"
-            style="color: #78c0e0"
+            style="color: var(--sky)"
           >
             <svg
               width="18"
@@ -108,44 +141,6 @@
               />
             </svg>
           </button>
-          <div
-            class="hidden sm:block w-px h-5 flex-shrink-0"
-            style="background: #449dd130"
-          ></div>
-          <div class="flex items-center gap-2 flex-shrink-0">
-            <span
-              class="hidden sm:inline text-xs font-semibold uppercase tracking-wide whitespace-nowrap"
-              style="color: #78c0e0"
-              data-i18n="header.myPlan"
-              >Mi plan</span
-            >
-            <div class="relative" id="plan-dropdown-wrapper">
-              <button type="button" id="plan-toggle" class="plan-toggle">
-                <span id="plan-label" class="plan-toggle-label">Cargando…</span>
-                <svg
-                  id="plan-arrow"
-                  class="plan-toggle-arrow"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-              <ul
-                id="plan-menu"
-                class="plan-menu"
-                role="listbox"
-                aria-hidden="true"
-                aria-label="Seleccionar plan"
-              ></ul>
-            </div>
-          </div>
         </div>
       </div>
     </header>
@@ -158,28 +153,61 @@
         class="flex flex-col gap-4 overflow-y-auto px-1 pb-1"
       ></div>
 
-      <div id="lang-switcher">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        </svg>
-        <button id="lang-es" class="lang-btn">ES</button>
-        <span class="lang-divider">|</span>
-        <button id="lang-en" class="lang-btn">EN</button>
+      <div class="flex items-center justify-between flex-shrink-0 px-1">
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="relative" id="plan-dropdown-wrapper">
+            <button type="button" id="plan-toggle" class="plan-toggle">
+              <span class="text-xs font-semibold uppercase tracking-wide whitespace-nowrap" style="color: var(--text-muted)" data-i18n="header.myPlan">Mi plan:</span>
+              <span id="plan-label" class="plan-toggle-label">Cargando…</span>
+              <svg
+                id="plan-arrow"
+                class="plan-toggle-arrow"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <ul
+              id="plan-menu"
+              class="plan-menu plan-menu-up"
+              role="listbox"
+              aria-hidden="true"
+              aria-label="Seleccionar plan"
+            ></ul>
+          </div>
+        </div>
+        <div id="lang-switcher">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <button id="lang-es" class="lang-btn">ES</button>
+          <span class="lang-divider">|</span>
+          <button id="lang-en" class="lang-btn">EN</button>
+        </div>
       </div>
 
       <form
         id="chat-form"
-        class="chat-input-bar bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center gap-1 p-1.5 flex-shrink-0"
+        class="chat-input-bar rounded-2xl shadow-sm flex items-center gap-1 p-1.5 flex-shrink-0"
+        style="background: var(--bg-card); border: 1px solid var(--border-card)"
       >
         <input
           id="chat-input"
           type="text"
           placeholder="Describe tu síntoma…"
           data-i18n-placeholder="chat.placeholder"
-          class="flex-1 px-3 py-2 outline-none text-slate-800 bg-transparent text-sm placeholder-slate-400 min-w-0"
+          class="flex-1 px-3 py-2 outline-none bg-transparent text-sm min-w-0"
+          style="color: var(--text-primary)"
           autocomplete="off"
           maxlength="500"
         />
@@ -192,7 +220,7 @@
           <span
             class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0 animate-pulse"
           ></span>
-          <span class="text-sm text-slate-500" data-i18n="chat.recording">Grabando</span>
+          <span class="text-sm" style="color: var(--text-secondary)" data-i18n="chat.recording">Grabando</span>
           <span
             id="recording-timer"
             class="text-sm font-mono font-semibold ml-auto pr-1"
@@ -210,30 +238,33 @@
             type="button"
             id="audio-play-btn"
             class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white"
-            style="background: #3943b7"
+            style="background: var(--royal)"
           ></button>
           <div
-            class="flex-1 relative h-1.5 bg-slate-200 rounded-full overflow-hidden"
+            class="flex-1 relative h-1.5 rounded-full overflow-hidden"
+            style="background: var(--border-card)"
           >
             <div
               id="audio-progress-fill"
               class="h-full absolute left-0 top-0"
               style="
                 width: 0%;
-                background: #3943b7;
+                background: var(--royal);
                 transition: width 0.15s linear;
               "
             ></div>
           </div>
           <span
             id="audio-preview-time"
-            class="text-xs font-mono text-slate-400 whitespace-nowrap flex-shrink-0"
+            class="text-xs font-mono whitespace-nowrap flex-shrink-0"
+            style="color: var(--text-muted)"
             >0:00</span
           >
           <button
             type="button"
             id="audio-delete-btn"
-            class="p-1.5 rounded-lg flex-shrink-0 text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+            class="p-1.5 rounded-lg flex-shrink-0 hover:text-red-500 hover:bg-red-50 transition-colors"
+            style="color: var(--text-muted)"
           >
             <svg
               width="15"
@@ -285,7 +316,8 @@
       </form>
 
       <p
-        class="text-xs text-slate-500 text-center leading-relaxed flex-shrink-0 flex items-start justify-center gap-1.5"
+        class="text-xs text-center leading-relaxed flex-shrink-0 flex items-start justify-center gap-1.5"
+        style="color: var(--text-secondary)"
       >
         <svg
           width="13"
@@ -311,6 +343,7 @@
         >
       </p>
     </main>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

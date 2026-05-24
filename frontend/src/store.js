@@ -1,9 +1,9 @@
 export const C = {
-  midnight: "#0e0e52",
-  indigo: "#150578",
-  royal: "#3943b7",
-  cerulean: "#449dd1",
-  sky: "#78c0e0",
+  midnight: "var(--midnight)",
+  indigo: "var(--navy)",
+  royal: "var(--royal)",
+  cerulean: "var(--cerulean)",
+  sky: "var(--sky)",
 };
 
 export const LS_CHAT = "copago_chat_v1";

@@ -11,7 +11,7 @@ export default {
     placeholder: "Describe your symptom…",
     send: "Send",
     welcome:
-      "Hi! I am <strong style=\"color:#0e0e52\">CopagoIA</strong>. Tell me what symptom or discomfort you have and I will tell you which specialist to see and <strong>how much you will pay</strong> at each hospital in your network.",
+      "Hi! I am <strong style=\"color:var(--text-accent)\">CopagoIA</strong>. Tell me what symptom or discomfort you have and I will tell you which specialist to see and <strong>how much you will pay</strong> at each hospital in your network.",
     welcomeHint: "Example: &ldquo;I've had chest pain since yesterday&rdquo;",
     error: "I had a problem processing your message. Please try again in a few seconds.",
     voiceError: "I could not process the voice note. Please try again.",
@@ -53,6 +53,9 @@ export default {
     swipeHint: "← swipe to see more →",
     disclaimer:
       "This is an informational estimate based on reference fees and your plan configuration. It does not constitute formal insurance authorization or replace medical consultation. Confirm with your insurer before the appointment.",
+  },
+  theme: {
+    toggle: "Toggle theme",
   },
   urgency: {
     label: "URGENT",
