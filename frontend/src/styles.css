@@ -597,6 +597,40 @@ body {
   }
 }
 
+#drop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+#drop-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.drop-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  border: 2px dashed var(--royal);
+  background: var(--bg-card);
+  color: var(--royal);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  box-shadow: 0 20px 60px rgba(14, 14, 82, 0.4);
+  pointer-events: none;
+}
+
 @media (max-width: 360px) {
   header h1 {
     font-size: 0.875rem;

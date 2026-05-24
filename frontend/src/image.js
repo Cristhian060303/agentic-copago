@@ -50,8 +50,49 @@ export function initImage() {
   const imagePreviewImg = document.getElementById("image-preview-img");
   const imageDeleteBtn = document.getElementById("image-delete-btn");
   const fileInput = document.getElementById("image-file-input");
+  const chatScrollWrapper = document.getElementById("chat-scroll-wrapper");
 
   if (!imageBtn) return;
+
+  const dropOverlay = document.createElement("div");
+  dropOverlay.id = "drop-overlay";
+  dropOverlay.innerHTML = `
+    <div class="drop-overlay-content">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <p>${t("chat.dropImage")}</p>
+    </div>`;
+  document.body.appendChild(dropOverlay);
+
+  let dragCounter = 0;
+
+  document.addEventListener("dragenter", (e) => {
+    e.preventDefault();
+    if (![...e.dataTransfer.types].includes("Files")) return;
+    dragCounter++;
+    dropOverlay.classList.add("visible");
+  });
+
+  document.addEventListener("dragleave", (e) => {
+    if (e.relatedTarget) return;
+    dragCounter = 0;
+    dropOverlay.classList.remove("visible");
+  });
+
+  document.addEventListener("dragover", (e) => e.preventDefault());
+
+  document.addEventListener("drop", async (e) => {
+    e.preventDefault();
+    dragCounter = 0;
+    dropOverlay.classList.remove("visible");
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    await handleFile(file);
+  });
 
   function enterPreviewState(blob, mimeType) {
     const url = URL.createObjectURL(blob);
@@ -70,12 +111,7 @@ export function initImage() {
     fileInput.value = "";
   }
 
-  imageBtn.addEventListener("click", () => fileInput.click());
-
-  fileInput.addEventListener("change", async () => {
-    const file = fileInput.files[0];
-    if (!file) return;
-
+  async function handleFile(file) {
     const allowed = ["image/jpeg", "image/png", "image/webp"];
     if (!allowed.includes(file.type)) {
       inputEl.placeholder = t("chat.imageTypeError");
@@ -83,10 +119,17 @@ export function initImage() {
       fileInput.value = "";
       return;
     }
-
     const compressed = await compressImage(file);
     const mimeType = compressed instanceof Blob && compressed !== file ? "image/jpeg" : file.type;
     enterPreviewState(compressed, mimeType);
+  }
+
+  imageBtn.addEventListener("click", () => fileInput.click());
+
+  fileInput.addEventListener("change", async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    await handleFile(file);
   });
 
   imageDeleteBtn.addEventListener("click", () => {

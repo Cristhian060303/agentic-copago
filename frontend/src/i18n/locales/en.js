@@ -22,6 +22,7 @@ export default {
     imageSizeError: "Image too large (max 3MB)",
     attachImage: "Attach image",
     imageAttached: "Image attached",
+    dropImage: "Drop the image here",
     disclaimer:
       "Informational estimate — <strong>does not replace medical consultation</strong> or constitute insurance authorization.",
   },
