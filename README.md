@@ -6,7 +6,7 @@ Agente conversacional que ayuda al paciente a entender **cuánto pagará** y **a
 
 ## Demo
 
-- **App pública:** _por publicar_
+- **App pública:** https://agentic-copago.vercel.app/
 - **Repositorio:** https://github.com/Cristhian060303/agentic-copago
 
 ## ¿Qué resuelve?
