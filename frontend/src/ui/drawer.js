@@ -68,26 +68,26 @@ function createDrawerDOM() {
   drawer.setAttribute("aria-label", t("drawer.title"));
   drawer.innerHTML = `
     <div class="flex items-center justify-between px-4 py-3.5 flex-shrink-0"
-         style="border-bottom: 1px solid rgba(68, 157, 209, 0.15)">
+         style="border-bottom: 1px solid var(--drawer-border)">
       <div class="flex items-center gap-2">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#449dd1"
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--drawer-accent)"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <polyline points="12 6 12 12 16 14"/>
         </svg>
-        <h2 class="font-bold text-white text-sm tracking-tight">${t("drawer.title")}</h2>
+        <h2 class="font-bold text-sm tracking-tight" style="color:var(--drawer-title)">${t("drawer.title")}</h2>
       </div>
       <div class="flex items-center gap-1">
-        <button id="drawer-new-chat-btn" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
-                style="color: #78c0e0" aria-label="${t("header.newChat")}">
+        <button id="drawer-new-chat-btn" class="p-1.5 rounded-lg hover:opacity-70 transition-colors"
+                style="color: var(--drawer-btn-color)" aria-label="${t("header.newChat")}">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
           </svg>
         </button>
-        <button id="history-close-btn" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
-                style="color: #78c0e0" aria-label="Cerrar">
+        <button id="history-close-btn" class="p-1.5 rounded-lg hover:opacity-70 transition-colors"
+                style="color: var(--drawer-btn-color)" aria-label="Cerrar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"/>
@@ -98,7 +98,7 @@ function createDrawerDOM() {
     </div>
     <ul id="history-list" class="flex-1 overflow-y-auto py-1" role="list"></ul>
     <div class="px-4 py-3 flex-shrink-0"
-         style="border-top: 1px solid rgba(68, 157, 209, 0.12)">
+         style="border-top: 1px solid var(--drawer-border)">
       <button id="history-clear-btn" class="drawer-clear-btn">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -133,7 +133,7 @@ export function renderDrawer() {
   if (!state.sessions.length) {
     historyList.innerHTML = `
       <li class="px-5 py-10 text-center list-none">
-        <p class="text-xs leading-relaxed" style="color:rgba(120,192,224,0.4)">${t("drawer.empty")}</p>
+        <p class="text-xs leading-relaxed" style="color:var(--drawer-text-muted)">${t("drawer.empty")}</p>
       </li>`;
     return;
   }
@@ -142,7 +142,7 @@ export function renderDrawer() {
       const active = s.id === state.currentSessionId;
       const especialidad = s.especialidad ? formatEspecialidad(s.especialidad) : null;
       const isVoice = s.chatLog?.find((e) => e.type === "user_text" || e.type === "user_voice")?.type === "user_voice";
-      const iconStroke = active ? "white" : "#449dd1";
+      const iconStroke = active ? "white" : "var(--drawer-accent)";
       const sessionIcon = isVoice
         ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${iconStroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
              <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
@@ -156,15 +156,15 @@ export function renderDrawer() {
         <div class="flex items-stretch">
           <button class="flex-1 text-left px-4 py-3.5 flex items-start gap-3 min-w-0" data-session-id="${escapeHtml(s.id)}">
             <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                 style="background:${active ? "#3943b7" : "rgba(255,255,255,0.08)"}">
+                 style="background:${active ? "var(--drawer-icon-bg-active)" : "var(--drawer-icon-bg)"}">
               ${sessionIcon}
             </div>
             <div class="flex-1 min-w-0">
-              <p class="text-xs font-semibold truncate" style="color:${active ? "white" : "rgba(255,255,255,0.85)"}">${escapeHtml(s.title)}</p>
-              ${especialidad ? `<p class="text-xs mt-0.5 truncate" style="color:rgba(68,157,209,0.7)">${escapeHtml(especialidad)}</p>` : ""}
-              <p class="text-xs mt-0.5" style="color:rgba(120,192,224,0.45)">${escapeHtml(s.planNombre || "")} · ${timeAgo(s.timestamp)}</p>
+              <p class="text-xs font-semibold truncate" style="color:var(--drawer-text)">${escapeHtml(s.title)}</p>
+              ${especialidad ? `<p class="text-xs mt-0.5 truncate" style="color:var(--drawer-accent)">${escapeHtml(especialidad)}</p>` : ""}
+              <p class="text-xs mt-0.5" style="color:var(--drawer-text-muted)">${escapeHtml(s.planNombre || "")} · ${timeAgo(s.timestamp)}</p>
             </div>
-            ${active ? `<span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#78c0e0"></span>` : ""}
+            ${active ? `<span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:var(--drawer-accent)"></span>` : ""}
           </button>
           <button class="history-delete-btn px-3 flex items-center justify-center flex-shrink-0"
                   data-delete-id="${escapeHtml(s.id)}"
@@ -247,6 +247,7 @@ export function loadHistorySession(sessionId) {
   }
 
   replayLog(session.chatLog);
+  renderDrawer();
   if (window.innerWidth < 768) closeDrawer();
   document.getElementById("chat-input").focus();
 }

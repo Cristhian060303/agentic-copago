@@ -137,7 +137,7 @@ export function appendEstimate(estimacion) {
   wrap.innerHTML = `
     <div class="rounded-2xl shadow-sm overflow-hidden" style="background:var(--bg-card); border:1px solid var(--border-card)">
       <div class="px-4 sm:px-5 py-3 flex items-center justify-between"
-           style="background: linear-gradient(135deg, ${C.midnight} 0%, ${C.indigo} 60%, ${C.royal} 100%)">
+           style="background: var(--royal)">
         <div>
           <p class="text-xs uppercase tracking-wide font-medium" style="color:${C.sky}">${t("estimate.specialty")}</p>
           <h3 class="text-white font-bold text-base sm:text-lg">${escapeHtml(formatEspecialidad(estimacion.especialidad))}</h3>
