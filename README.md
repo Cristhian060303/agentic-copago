@@ -56,6 +56,8 @@ API disponible en `http://localhost:3001`.
 
 ```bash
 cd frontend
+cp .env.example .env
+# VITE_API_URL ya apunta a localhost:3001 por defecto, no hace falta cambiarlo en local
 npm install
 npm run dev
 ```
