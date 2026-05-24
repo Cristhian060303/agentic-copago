@@ -6,8 +6,8 @@ Agente conversacional que ayuda al paciente a entender **cuánto pagará** y **a
 
 ## Demo
 
-- **App pública:** _por publicar_
-- **Repositorio:** este mismo
+- **App pública:** https://agentic-copago.vercel.app/
+- **Repositorio:** https://github.com/Cristhian060303/agentic-copago
 
 ## ¿Qué resuelve?
 
@@ -16,10 +16,12 @@ Hoy un paciente tarda horas en llamar al call center del seguro para saber qué 
 ## Diferenciadores
 
 1. **Salida estructurada del LLM** — Gemini devuelve JSON tipado, no texto suelto.
-2. **Desglose visible** — el paciente ve `precio base − cobertura = copago` por cada hospital.
-3. **Detección de urgencia** — si el síntoma es grave, el agente recomienda emergencias antes que consulta.
+2. **Desglose visible** — el paciente ve `precio base − cobertura = copago` por cada hospital de su red.
+3. **Detección de urgencia** — si el síntoma es grave, el agente indica emergencias y sigue mostrando el estimado de copago.
 4. **Disclaimer médico** — visible siempre, no reemplaza consulta médica ni autorización formal.
-5. **Notas de voz** — el paciente graba un audio; Gemini lo transcribe y procesa directamente, sin depender de servicios externos de reconocimiento de voz.
+5. **Notas de voz** — el paciente graba un audio; Gemini lo transcribe y procesa directamente, sin servicios externos de STT.
+6. **Soporte multiidioma (ES / EN)** — el agente responde en el idioma seleccionado; la interfaz entera cambia de idioma sin recargar el estado.
+7. **Historial de sesiones** — las conversaciones se persisten en `localStorage`; el paciente puede retomar o eliminar cualquier sesión anterior desde el drawer lateral.
 
 ## Stack
 
@@ -64,10 +66,10 @@ App disponible en `http://localhost:5173`.
 
 - `GET  /api/plans` — lista de planes de seguro disponibles
 - `POST /api/agent` — envía un mensaje al agente
-  - Body: `{ mensaje, plan_id, historial }`
+  - Body: `{ mensaje, plan_id, historial, lang? }` (`lang`: `"es"` | `"en"`, default `"es"`)
   - Retorna: `{ clasificacion, estimacion }`
 - `POST /api/voice` — envía una nota de voz al agente
-  - Body: `{ audio (base64), mime_type, plan_id, historial }`
+  - Body: `{ audio (base64), mime_type, plan_id, historial, lang? }`
   - Retorna: `{ clasificacion, estimacion }`
 - `GET  /health` — healthcheck
 
