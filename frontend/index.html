@@ -146,14 +146,16 @@
     </header>
 
     <main
-      class="chat-main w-full max-w-3xl mx-auto px-3 sm:px-4 pt-4 pb-3 gap-3 flex-1"
+      class="chat-main w-full pt-0 pb-3 px-3 sm:px-4 gap-3 flex-1"
     >
-      <div
-        id="chat"
-        class="flex flex-col gap-4 overflow-y-auto px-1 pb-1"
-      ></div>
+      <div id="chat-scroll-wrapper" class="flex-1 overflow-y-auto min-h-0">
+        <div
+          id="chat"
+          class="flex flex-col gap-4 max-w-3xl mx-auto px-3 sm:px-4 pt-4 pb-1"
+        ></div>
+      </div>
 
-      <div class="flex items-center justify-between flex-shrink-0 px-1">
+      <div class="flex items-center justify-between flex-shrink-0 px-1 max-w-3xl mx-auto w-full sm:px-4">
         <div class="flex items-center gap-2 flex-shrink-0">
           <div class="relative" id="plan-dropdown-wrapper">
             <button type="button" id="plan-toggle" class="plan-toggle">
@@ -198,7 +200,7 @@
 
       <form
         id="chat-form"
-        class="chat-input-bar rounded-2xl shadow-sm flex items-center gap-1 p-1.5 flex-shrink-0"
+        class="chat-input-bar rounded-2xl shadow-sm flex items-center gap-1 p-1.5 flex-shrink-0 max-w-3xl mx-auto w-full"
         style="background: var(--bg-card); border: 1px solid var(--border-card)"
       >
         <input
@@ -357,7 +359,7 @@
       </form>
 
       <p
-        class="text-xs text-center leading-relaxed flex-shrink-0 flex items-start justify-center gap-1.5"
+        class="text-xs text-center leading-relaxed flex-shrink-0 flex items-start justify-center gap-1.5 max-w-3xl mx-auto w-full px-3 sm:px-4"
         style="color: var(--text-secondary)"
       >
         <svg

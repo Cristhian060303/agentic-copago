@@ -2,6 +2,7 @@ import { C } from "../store.js";
 import { t } from "../i18n/index.js";
 
 export const chatEl = document.getElementById("chat");
+const scrollEl = document.getElementById("chat-scroll-wrapper") || chatEl;
 
 export function escapeHtml(s) {
   return String(s)
@@ -53,7 +54,7 @@ export function appendBubble(role, text) {
       </div>`;
   }
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function appendLoading() {
@@ -67,7 +68,7 @@ export function appendLoading() {
       <div class="loader-dots"><span></span><span></span><span></span></div>
     </div>`;
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function removeLoading() {
@@ -91,7 +92,7 @@ export function appendUrgency(urgencia) {
       ${t("urgency.message")}
     </div>`;
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function appendEstimate(estimacion) {
@@ -205,7 +206,7 @@ export function appendEstimate(estimacion) {
     </div>`;
 
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function appendVoiceBubble(blobUrl, duration) {
@@ -229,7 +230,7 @@ export function appendVoiceBubble(blobUrl, duration) {
       </div>
     </div>`;
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 
   const audio = new Audio(blobUrl);
   const btn = document.getElementById(`${id}-btn`);
@@ -278,7 +279,7 @@ export function appendVoiceBubbleStatic(duration) {
       </div>
     </div>`;
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function appendImageBubble(blobUrl) {
@@ -292,7 +293,7 @@ export function appendImageBubble(blobUrl) {
            onclick="window.open(this.src,'_blank')"/>
     </div>`;
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function appendImageBubbleStatic() {
@@ -310,7 +311,7 @@ export function appendImageBubbleStatic() {
       <span class="text-white text-xs">${t("drawer.imageNote")}</span>
     </div>`;
   chatEl.appendChild(wrap);
-  chatEl.scrollTop = chatEl.scrollHeight;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function createWelcomeBubble() {

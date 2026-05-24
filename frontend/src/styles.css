@@ -98,20 +98,20 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 8px);
 }
 
-#chat {
-  flex: 1;
+#chat-scroll-wrapper {
+  flex: 1 1 0%;
   overflow-y: auto;
   min-height: 0;
   scroll-behavior: smooth;
 }
 
-#chat::-webkit-scrollbar {
+#chat-scroll-wrapper::-webkit-scrollbar {
   width: 4px;
 }
-#chat::-webkit-scrollbar-track {
+#chat-scroll-wrapper::-webkit-scrollbar-track {
   background: transparent;
 }
-#chat::-webkit-scrollbar-thumb {
+#chat-scroll-wrapper::-webkit-scrollbar-thumb {
   background: var(--cerulean);
   border-radius: 99px;
   opacity: 0.4;
@@ -586,6 +586,10 @@ body {
   }
 
   #history-close-btn {
+    display: none;
+  }
+
+  #nueva-consulta-btn {
     display: none;
   }
 }

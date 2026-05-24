@@ -115,7 +115,8 @@ export function replayLog(log) {
       appendEstimate(entry.estimacion);
     }
   }
-  chatEl.scrollTop = chatEl.scrollHeight;
+  const scrollEl = document.getElementById("chat-scroll-wrapper") || chatEl;
+  scrollEl.scrollTop = scrollEl.scrollHeight;
 }
 
 export function restoreSession(plans) {
