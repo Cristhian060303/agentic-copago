@@ -29,7 +29,7 @@ Hoy un paciente tarda horas en llamar al call center del seguro para saber qué 
 | LLM | Gemini Flash Lite (JSON mode, configurable vía `GEMINI_MODEL`) |
 | Frontend | Vite + Vanilla JS + Tailwind (CDN) |
 | Datos | JSON estático (planes, hospitales, especialidades) |
-| Despliegue | Render (back) + Vercel (front) |
+| Despliegue | Railway (back) + Vercel (front) |
 
 ## Cómo correr en local
 
