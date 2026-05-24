@@ -4,9 +4,20 @@
     "nombre": "Medicina General",
     "descripcion": "Primera línea de atención para síntomas generales y enfermedades comunes.",
     "sintomas_comunes": [
-      "fiebre", "malestar general", "gripe", "resfriado", "dolor muscular",
-      "fatiga", "tos", "dolor de cabeza", "congestión nasal", "escalofríos",
-      "pérdida del apetito", "sudoración nocturna", "decaimiento", "cansancio extremo"
+      "fiebre",
+      "malestar general",
+      "gripe",
+      "resfriado",
+      "dolor muscular",
+      "fatiga",
+      "tos",
+      "dolor de cabeza",
+      "congestión nasal",
+      "escalofríos",
+      "pérdida del apetito",
+      "sudoración nocturna",
+      "decaimiento",
+      "cansancio extremo"
     ]
   },
   {
@@ -14,10 +25,18 @@
     "nombre": "Cardiología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades del corazón y sistema circulatorio.",
     "sintomas_comunes": [
-      "dolor de pecho", "palpitaciones", "presión alta", "falta de aire",
-      "mareos al esfuerzo", "latidos irregulares", "hinchazón en piernas",
-      "fatiga extrema al caminar", "dolor en brazo izquierdo", "desmayos",
-      "pulso acelerado en reposo", "soplo cardíaco detectado"
+      "dolor de pecho",
+      "palpitaciones",
+      "presión alta",
+      "falta de aire",
+      "mareos al esfuerzo",
+      "latidos irregulares",
+      "hinchazón en piernas",
+      "fatiga extrema al caminar",
+      "dolor en brazo izquierdo",
+      "desmayos",
+      "pulso acelerado en reposo",
+      "soplo cardíaco detectado"
     ]
   },
   {
@@ -25,10 +44,22 @@
     "nombre": "Dermatología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades de la piel, cabello y uñas.",
     "sintomas_comunes": [
-      "manchas en la piel", "acné", "alergias cutáneas", "caída del cabello",
-      "lunares sospechosos", "psoriasis", "eccema", "urticaria", "hongos en uñas",
-      "verrugas", "rosácea", "picazón generalizada", "piel seca severa",
-      "herpes", "dermatitis", "cambio de color en lunares"
+      "manchas en la piel",
+      "acné",
+      "alergias cutáneas",
+      "caída del cabello",
+      "lunares sospechosos",
+      "psoriasis",
+      "eccema",
+      "urticaria",
+      "hongos en uñas",
+      "verrugas",
+      "rosácea",
+      "picazón generalizada",
+      "piel seca severa",
+      "herpes",
+      "dermatitis",
+      "cambio de color en lunares"
     ]
   },
   {
@@ -36,11 +67,20 @@
     "nombre": "Ginecología",
     "descripcion": "Salud reproductiva y ginecológica de la mujer.",
     "sintomas_comunes": [
-      "dolor pélvico", "control ginecológico", "embarazo", "alteraciones menstruales",
-      "papanicolau", "flujo vaginal anormal", "sangrado fuera del ciclo",
-      "dolor durante relaciones", "quistes ováricos", "menopausia",
-      "sangrado posmenopáusico", "infección urinaria recurrente en mujeres",
-      "anticonceptivos", "miomas uterinos"
+      "dolor pélvico",
+      "control ginecológico",
+      "embarazo",
+      "alteraciones menstruales",
+      "papanicolau",
+      "flujo vaginal anormal",
+      "sangrado fuera del ciclo",
+      "dolor durante relaciones",
+      "quistes ováricos",
+      "menopausia",
+      "sangrado posmenopáusico",
+      "infección urinaria recurrente en mujeres",
+      "anticonceptivos",
+      "miomas uterinos"
     ]
   },
   {
@@ -48,11 +88,20 @@
     "nombre": "Pediatría",
     "descripcion": "Atención médica integral para niños y adolescentes.",
     "sintomas_comunes": [
-      "control del niño sano", "fiebre en niños", "vacunación", "diarrea infantil",
-      "crecimiento", "llanto excesivo en bebés", "erupciones en niños",
-      "problemas de alimentación en bebés", "retraso del desarrollo",
-      "otitis en niños", "convulsiones febriles", "asma infantil",
-      "control de peso en adolescentes", "acné adolescente"
+      "control del niño sano",
+      "fiebre en niños",
+      "vacunación",
+      "diarrea infantil",
+      "crecimiento",
+      "llanto excesivo en bebés",
+      "erupciones en niños",
+      "problemas de alimentación en bebés",
+      "retraso del desarrollo",
+      "otitis en niños",
+      "convulsiones febriles",
+      "asma infantil",
+      "control de peso en adolescentes",
+      "acné adolescente"
     ]
   },
   {
@@ -60,11 +109,25 @@
     "nombre": "Traumatología y Ortopedia",
     "descripcion": "Diagnóstico y tratamiento de lesiones musculoesqueléticas y enfermedades de huesos y articulaciones.",
     "sintomas_comunes": [
-      "dolor articular", "fractura", "esguince", "dolor de espalda",
-      "dolor de rodilla", "dolor de hombro", "dolor de cadera", "dolor de columna",
-      "luxación", "tendinitis", "lesión deportiva", "artritis",
-      "dolor de muñeca", "pie plano", "escoliosis", "osteoporosis",
-      "desgaste de cartílago", "dolor de cuello", "hernia de disco"
+      "dolor articular",
+      "fractura",
+      "esguince",
+      "dolor de espalda",
+      "dolor de rodilla",
+      "dolor de hombro",
+      "dolor de cadera",
+      "dolor de columna",
+      "luxación",
+      "tendinitis",
+      "lesión deportiva",
+      "artritis",
+      "dolor de muñeca",
+      "pie plano",
+      "escoliosis",
+      "osteoporosis",
+      "desgaste de cartílago",
+      "dolor de cuello",
+      "hernia de disco"
     ]
   },
   {
@@ -72,11 +135,24 @@
     "nombre": "Gastroenterología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema digestivo.",
     "sintomas_comunes": [
-      "dolor abdominal", "acidez", "diarrea persistente", "estreñimiento",
-      "náuseas", "reflujo", "vómitos frecuentes", "distensión abdominal",
-      "sangre en heces", "pérdida de peso inexplicable", "dificultad para tragar",
-      "colitis", "gastritis", "colon irritable", "úlcera gástrica",
-      "hígado graso", "hepatitis", "cálculos en vesícula"
+      "dolor abdominal",
+      "acidez",
+      "diarrea persistente",
+      "estreñimiento",
+      "náuseas",
+      "reflujo",
+      "vómitos frecuentes",
+      "distensión abdominal",
+      "sangre en heces",
+      "pérdida de peso inexplicable",
+      "dificultad para tragar",
+      "colitis",
+      "gastritis",
+      "colon irritable",
+      "úlcera gástrica",
+      "hígado graso",
+      "hepatitis",
+      "cálculos en vesícula"
     ]
   },
   {
@@ -84,10 +160,21 @@
     "nombre": "Oftalmología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades de los ojos y la visión.",
     "sintomas_comunes": [
-      "visión borrosa", "dolor de ojos", "ojos rojos", "control visual",
-      "lentes", "lagrimeo excesivo", "sensibilidad a la luz", "ojo seco",
-      "moscas volantes", "pérdida de visión periférica", "cataratas",
-      "glaucoma", "conjuntivitis", "párpado caído", "estrabismo"
+      "visión borrosa",
+      "dolor de ojos",
+      "ojos rojos",
+      "control visual",
+      "lentes",
+      "lagrimeo excesivo",
+      "sensibilidad a la luz",
+      "ojo seco",
+      "moscas volantes",
+      "pérdida de visión periférica",
+      "cataratas",
+      "glaucoma",
+      "conjuntivitis",
+      "párpado caído",
+      "estrabismo"
     ]
   },
   {
@@ -95,11 +182,22 @@
     "nombre": "Endocrinología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades hormonales y metabólicas.",
     "sintomas_comunes": [
-      "diabetes", "tiroides", "obesidad", "alteraciones hormonales",
-      "control de azúcar", "hipotiroidismo", "hipertiroidismo", "bocio",
-      "síndrome de ovario poliquístico", "menopausia precoz", "osteoporosis",
-      "exceso de vello", "sudoración excesiva", "intolerancia al frío o calor",
-      "niveles altos de colesterol", "problemas de crecimiento en niños"
+      "diabetes",
+      "tiroides",
+      "obesidad",
+      "alteraciones hormonales",
+      "control de azúcar",
+      "hipotiroidismo",
+      "hipertiroidismo",
+      "bocio",
+      "síndrome de ovario poliquístico",
+      "menopausia precoz",
+      "osteoporosis",
+      "exceso de vello",
+      "sudoración excesiva",
+      "intolerancia al frío o calor",
+      "niveles altos de colesterol",
+      "problemas de crecimiento en niños"
     ]
   },
   {
@@ -107,12 +205,24 @@
     "nombre": "Neurología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema nervioso central y periférico.",
     "sintomas_comunes": [
-      "dolor de cabeza crónico", "migraña", "mareos", "pérdida de equilibrio",
-      "entumecimiento en extremidades", "hormigueo en manos o pies",
-      "convulsiones", "pérdida de memoria", "desmayos frecuentes",
-      "temblores", "dificultad para hablar", "visión doble",
-      "parálisis facial", "esclerosis múltiple", "neuropatía diabética",
-      "ACV o derrame cerebral", "epilepsia", "Parkinson"
+      "dolor de cabeza crónico",
+      "migraña",
+      "mareos",
+      "pérdida de equilibrio",
+      "entumecimiento en extremidades",
+      "hormigueo en manos o pies",
+      "convulsiones",
+      "pérdida de memoria",
+      "desmayos frecuentes",
+      "temblores",
+      "dificultad para hablar",
+      "visión doble",
+      "parálisis facial",
+      "esclerosis múltiple",
+      "neuropatía diabética",
+      "ACV o derrame cerebral",
+      "epilepsia",
+      "Parkinson"
     ]
   },
   {
@@ -120,11 +230,22 @@
     "nombre": "Psiquiatría",
     "descripcion": "Diagnóstico y tratamiento de trastornos mentales y del comportamiento.",
     "sintomas_comunes": [
-      "depresión", "ansiedad severa", "insomnio crónico", "pánico",
-      "alucinaciones", "pensamientos obsesivos", "cambios bruscos de humor",
-      "trastorno bipolar", "esquizofrenia", "fobia", "estrés postraumático",
-      "trastorno de alimentación", "adicciones", "hiperactividad en adultos",
-      "ideación suicida", "psicosis"
+      "depresión",
+      "ansiedad severa",
+      "insomnio crónico",
+      "pánico",
+      "alucinaciones",
+      "pensamientos obsesivos",
+      "cambios bruscos de humor",
+      "trastorno bipolar",
+      "esquizofrenia",
+      "fobia",
+      "estrés postraumático",
+      "trastorno de alimentación",
+      "adicciones",
+      "hiperactividad en adultos",
+      "ideación suicida",
+      "psicosis"
     ]
   },
   {
@@ -132,11 +253,20 @@
     "nombre": "Urología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades del tracto urinario y sistema reproductor masculino.",
     "sintomas_comunes": [
-      "dolor al orinar", "sangre en orina", "infección urinaria",
-      "cálculos renales", "incontinencia urinaria", "dificultad para orinar",
-      "dolor en riñones", "próstata agrandada", "disfunción eréctil",
-      "infertilidad masculina", "varicocele", "testículo no descendido en niños",
-      "orina frecuente nocturna", "cistitis"
+      "dolor al orinar",
+      "sangre en orina",
+      "infección urinaria",
+      "cálculos renales",
+      "incontinencia urinaria",
+      "dificultad para orinar",
+      "dolor en riñones",
+      "próstata agrandada",
+      "disfunción eréctil",
+      "infertilidad masculina",
+      "varicocele",
+      "testículo no descendido en niños",
+      "orina frecuente nocturna",
+      "cistitis"
     ]
   },
   {
@@ -144,10 +274,20 @@
     "nombre": "Neumología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema respiratorio.",
     "sintomas_comunes": [
-      "tos crónica", "falta de aire en reposo", "sibilancias", "asma",
-      "bronquitis crónica", "enfisema", "neumonía recurrente", "EPOC",
-      "apnea del sueño", "ronquidos severos", "expectoración con sangre",
-      "dolor al respirar", "tos nocturna persistente", "dificultad respiratoria al acostarse"
+      "tos crónica",
+      "falta de aire en reposo",
+      "sibilancias",
+      "asma",
+      "bronquitis crónica",
+      "enfisema",
+      "neumonía recurrente",
+      "EPOC",
+      "apnea del sueño",
+      "ronquidos severos",
+      "expectoración con sangre",
+      "dolor al respirar",
+      "tos nocturna persistente",
+      "dificultad respiratoria al acostarse"
     ]
   },
   {
@@ -155,12 +295,19 @@
     "nombre": "Oncología",
     "descripcion": "Diagnóstico y tratamiento del cáncer y tumores.",
     "sintomas_comunes": [
-      "bulto o masa palpable", "pérdida de peso inexplicable",
-      "fatiga extrema sin causa aparente", "sudoración nocturna severa",
-      "fiebre sin infección detectada", "cambios en lunares",
-      "sangrado anormal", "tos persistente con sangre",
-      "dificultad para tragar progresiva", "dolor óseo persistente",
-      "seguimiento de diagnóstico de cáncer", "quimioterapia", "radioterapia"
+      "bulto o masa palpable",
+      "pérdida de peso inexplicable",
+      "fatiga extrema sin causa aparente",
+      "sudoración nocturna severa",
+      "fiebre sin infección detectada",
+      "cambios en lunares",
+      "sangrado anormal",
+      "tos persistente con sangre",
+      "dificultad para tragar progresiva",
+      "dolor óseo persistente",
+      "seguimiento de diagnóstico de cáncer",
+      "quimioterapia",
+      "radioterapia"
     ]
   },
   {
@@ -168,11 +315,20 @@
     "nombre": "Reumatología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades autoinmunes y reumáticas.",
     "sintomas_comunes": [
-      "dolor articular en múltiples articulaciones", "rigidez matutina",
-      "artritis reumatoide", "lupus", "fibromialgia", "dolor muscular difuso",
-      "inflamación articular", "fatiga crónica", "sequedad de ojos y boca",
-      "sarpullido en mariposa en cara", "sensibilidad al frío en dedos",
-      "espondilitis", "gota", "dolor de talón crónico"
+      "dolor articular en múltiples articulaciones",
+      "rigidez matutina",
+      "artritis reumatoide",
+      "lupus",
+      "fibromialgia",
+      "dolor muscular difuso",
+      "inflamación articular",
+      "fatiga crónica",
+      "sequedad de ojos y boca",
+      "sarpullido en mariposa en cara",
+      "sensibilidad al frío en dedos",
+      "espondilitis",
+      "gota",
+      "dolor de talón crónico"
     ]
   },
   {
@@ -180,11 +336,21 @@
     "nombre": "Otorrinolaringología",
     "descripcion": "Diagnóstico y tratamiento de enfermedades de oído, nariz y garganta.",
     "sintomas_comunes": [
-      "dolor de oído", "pérdida de audición", "zumbido en oídos",
-      "sinusitis", "congestión nasal crónica", "ronquera persistente",
-      "dificultad para tragar", "amígdalas inflamadas", "pólipos nasales",
-      "vértigo", "mareos posicionales", "sangrado nasal frecuente",
-      "dolor de garganta crónico", "otitis", "desviación de tabique"
+      "dolor de oído",
+      "pérdida de audición",
+      "zumbido en oídos",
+      "sinusitis",
+      "congestión nasal crónica",
+      "ronquera persistente",
+      "dificultad para tragar",
+      "amígdalas inflamadas",
+      "pólipos nasales",
+      "vértigo",
+      "mareos posicionales",
+      "sangrado nasal frecuente",
+      "dolor de garganta crónico",
+      "otitis",
+      "desviación de tabique"
     ]
   },
   {
@@ -192,11 +358,21 @@
     "nombre": "Psicología",
     "descripcion": "Evaluación y tratamiento de problemas emocionales y conductuales mediante terapia.",
     "sintomas_comunes": [
-      "ansiedad", "estrés crónico", "depresión leve a moderada",
-      "problemas de pareja", "duelo", "baja autoestima", "insomnio por estrés",
-      "fobias", "timidez extrema", "problemas de conducta en niños",
-      "dificultades de aprendizaje", "TDAH", "terapia de pareja",
-      "manejo de emociones", "crisis de ansiedad leve"
+      "ansiedad",
+      "estrés crónico",
+      "depresión leve a moderada",
+      "problemas de pareja",
+      "duelo",
+      "baja autoestima",
+      "insomnio por estrés",
+      "fobias",
+      "timidez extrema",
+      "problemas de conducta en niños",
+      "dificultades de aprendizaje",
+      "TDAH",
+      "terapia de pareja",
+      "manejo de emociones",
+      "crisis de ansiedad leve"
     ]
   },
   {
@@ -204,11 +380,20 @@
     "nombre": "Nutrición y Dietética",
     "descripcion": "Evaluación y orientación nutricional para una alimentación saludable.",
     "sintomas_comunes": [
-      "sobrepeso", "obesidad", "delgadez extrema", "diabetes nutricional",
-      "colesterol alto", "control de alimentación", "dieta post-operatoria",
-      "anemia por déficit nutricional", "trastornos alimenticios leves",
-      "nutrición deportiva", "alimentación en embarazo", "alimentación en niños",
-      "intolerancia al gluten", "intolerancia a la lactosa"
+      "sobrepeso",
+      "obesidad",
+      "delgadez extrema",
+      "diabetes nutricional",
+      "colesterol alto",
+      "control de alimentación",
+      "dieta post-operatoria",
+      "anemia por déficit nutricional",
+      "trastornos alimenticios leves",
+      "nutrición deportiva",
+      "alimentación en embarazo",
+      "alimentación en niños",
+      "intolerancia al gluten",
+      "intolerancia a la lactosa"
     ]
   },
   {
@@ -216,12 +401,18 @@
     "nombre": "Medicina Interna",
     "descripcion": "Diagnóstico y tratamiento de enfermedades complejas en adultos que involucran múltiples órganos.",
     "sintomas_comunes": [
-      "diagnóstico no definido con múltiples síntomas", "enfermedades crónicas complejas",
-      "fiebre prolongada sin diagnóstico", "pérdida de peso con múltiples síntomas",
-      "control de hipertensión severa", "insuficiencia renal",
-      "enfermedades autoinmunes complejas", "anemia crónica",
-      "infecciones sistémicas", "paciente pluripatológico",
-      "segundas opiniones médicas", "síntomas que involucran varios sistemas"
+      "diagnóstico no definido con múltiples síntomas",
+      "enfermedades crónicas complejas",
+      "fiebre prolongada sin diagnóstico",
+      "pérdida de peso con múltiples síntomas",
+      "control de hipertensión severa",
+      "insuficiencia renal",
+      "enfermedades autoinmunes complejas",
+      "anemia crónica",
+      "infecciones sistémicas",
+      "paciente pluripatológico",
+      "segundas opiniones médicas",
+      "síntomas que involucran varios sistemas"
     ]
   }
 ]

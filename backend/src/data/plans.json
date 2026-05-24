@@ -60,9 +60,7 @@
       "santa_ines",
       "monte_sinai_cuenca"
     ],
-    "exclusiones": [
-      "medicina_estetica"
-    ],
+    "exclusiones": ["medicina_estetica"],
     "tope_consultas_anuales": 24
   },
   {
@@ -100,9 +98,7 @@
       "clinica_manta",
       "clinica_portoviejo"
     ],
-    "exclusiones": [
-      "medicina_estetica"
-    ],
+    "exclusiones": ["medicina_estetica"],
     "tope_consultas_anuales": null
   },
   {
@@ -180,10 +176,7 @@
       "clinica_manta",
       "clinica_machala"
     ],
-    "exclusiones": [
-      "medicina_estetica",
-      "tratamientos_experimentales"
-    ],
+    "exclusiones": ["medicina_estetica", "tratamientos_experimentales"],
     "tope_consultas_anuales": 20
   },
   {
