@@ -1,4 +1,5 @@
 import { C } from "../store.js";
+import { t } from "../i18n/index.js";
 
 export const chatEl = document.getElementById("chat");
 
@@ -83,9 +84,9 @@ export function appendUrgency(urgencia) {
     <div class="bg-red-50 border-2 border-red-300 rounded-2xl rounded-tl-sm px-4 py-3 text-red-900 text-sm leading-relaxed">
       <strong class="flex items-center gap-1.5 mb-1">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        URGENTE
+        ${t("urgency.label")}
       </strong>
-      La severidad de los síntomas requiere atención inmediata. Acude a la sala de emergencias del hospital más cercano <strong>ahora mismo</strong>.
+      ${t("urgency.message")}
     </div>`;
   chatEl.appendChild(wrap);
   chatEl.scrollTop = chatEl.scrollHeight;
@@ -116,8 +117,8 @@ export function appendEstimate(estimacion) {
           </span>
           ${
             h.en_red
-              ? `<span class="text-xs font-semibold" style="color:${C.royal}">✓ En red</span>`
-              : `<span class="text-xs text-orange-600 font-medium">Fuera de red</span>`
+              ? `<span class="text-xs font-semibold" style="color:${C.royal}">${t("estimate.inNetwork")}</span>`
+              : `<span class="text-xs text-orange-600 font-medium">${t("estimate.outNetwork")}</span>`
           }
         </div>
       </td>
@@ -136,11 +137,11 @@ export function appendEstimate(estimacion) {
       <div class="px-4 sm:px-5 py-3 flex items-center justify-between"
            style="background: linear-gradient(135deg, ${C.midnight} 0%, ${C.indigo} 60%, ${C.royal} 100%)">
         <div>
-          <p class="text-xs uppercase tracking-wide font-medium" style="color:${C.sky}">Especialidad sugerida</p>
+          <p class="text-xs uppercase tracking-wide font-medium" style="color:${C.sky}">${t("estimate.specialty")}</p>
           <h3 class="text-white font-bold text-base sm:text-lg">${escapeHtml(formatEspecialidad(estimacion.especialidad))}</h3>
         </div>
         <div class="text-right">
-          <p class="text-xs" style="color:${C.sky}">Tu plan</p>
+          <p class="text-xs" style="color:${C.sky}">${t("estimate.yourPlan")}</p>
           <p class="text-white text-xs sm:text-sm font-semibold leading-tight max-w-[120px] sm:max-w-none">
             ${escapeHtml(estimacion.plan.nombre)}
           </p>
@@ -160,18 +161,18 @@ export function appendEstimate(estimacion) {
               </svg>
             </div>
             <div>
-              <p class="text-xs font-bold uppercase tracking-wide" style="color:${C.indigo}">Opción más económica</p>
+              <p class="text-xs font-bold uppercase tracking-wide" style="color:${C.indigo}">${t("estimate.cheapest")}</p>
               <p class="font-bold text-sm sm:text-base" style="color:${C.midnight}">${escapeHtml(top.nombre)}</p>
               <p class="text-sm" style="color:${C.indigo}">
-                Pagas solo <strong>$${top.desglose.copago}</strong>
-                ${ahorro > 0 ? ` · ahorras <strong>$${ahorro}</strong> vs. la más cara` : ""}
+                ${t("estimate.youPay")} <strong>$${top.desglose.copago}</strong>
+                ${ahorro > 0 ? ` · ${t("estimate.youSave")} <strong>$${ahorro}</strong> ${t("estimate.vs")}` : ""}
               </p>
             </div>
           </div>
         `
             : `
           <div class="mb-4 p-3 bg-slate-100 rounded-xl text-sm text-slate-600">
-            Ningún hospital de la red atiende esta especialidad. Contacta a tu aseguradora.
+            ${t("estimate.noHospital")}
           </div>
         `
         }
@@ -182,21 +183,21 @@ export function appendEstimate(estimacion) {
             <table class="w-full text-sm border-collapse min-w-[260px] estimate-table">
               <thead>
                 <tr class="border-b-2" style="border-color:${C.sky}">
-                  <th class="text-left pb-2 pl-2 text-xs font-bold uppercase tracking-wide" style="color:${C.midnight}">Hospital</th>
-                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 col-hide-xs">Precio</th>
-                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 col-hide-xs">Cobertura</th>
-                  <th class="text-right pb-2 pr-2 text-xs font-bold uppercase tracking-wide" style="color:${C.royal}">Tu copago</th>
+                  <th class="text-left pb-2 pl-2 text-xs font-bold uppercase tracking-wide" style="color:${C.midnight}">${t("estimate.hospital")}</th>
+                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 col-hide-xs">${t("estimate.price")}</th>
+                  <th class="text-right pb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 col-hide-xs">${t("estimate.coverage")}</th>
+                  <th class="text-right pb-2 pr-2 text-xs font-bold uppercase tracking-wide" style="color:${C.royal}">${t("estimate.copago")}</th>
                 </tr>
               </thead>
               <tbody>${rows}</tbody>
             </table>
           </div>
-          <p class="text-xs text-slate-400 mt-1 text-center sm:hidden">← desliza para ver más →</p>
+          <p class="text-xs text-slate-400 mt-1 text-center sm:hidden">${t("estimate.swipeHint")}</p>
         `
             : ""
         }
         <p class="text-xs text-slate-500 mt-4 italic leading-relaxed border-t border-slate-100 pt-3">
-          ${escapeHtml(estimacion.disclaimer)}
+          ${t("estimate.disclaimer")}
         </p>
       </div>
     </div>`;
@@ -289,10 +290,8 @@ export function createWelcomeBubble() {
       </svg>
     </div>
     <div class="bg-white rounded-2xl rounded-tl-sm p-4 shadow-sm border border-slate-200">
-      <p class="text-slate-800 text-sm leading-relaxed">
-        ¡Hola! Soy <strong style="color:#0e0e52">CopagoIA</strong>. Cuéntame qué síntoma o molestia tienes y te diré a qué especialista acudir y <strong>cuánto pagarás</strong> en cada hospital de tu red.
-      </p>
-      <p class="text-xs text-slate-500 mt-2 italic">Ejemplo: "tengo dolor en el pecho desde ayer"</p>
+      <p class="text-slate-800 text-sm leading-relaxed">${t("chat.welcome")}</p>
+      <p class="text-xs text-slate-500 mt-2 italic">${t("chat.welcomeHint")}</p>
     </div>`;
   return wrap;
 }

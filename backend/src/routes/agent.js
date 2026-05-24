@@ -8,6 +8,7 @@ const router = Router();
 const chatSchema = z.object({
   mensaje: z.string().min(1).max(1000),
   plan_id: z.string().min(1).max(64),
+  lang: z.enum(["es", "en"]).optional().default("es"),
   historial: z
     .array(
       z.object({
@@ -28,10 +29,10 @@ router.post("/", async (req, res) => {
       .json({ error: "input inválido", detalles: parsed.error.issues });
   }
 
-  const { mensaje, plan_id, historial } = parsed.data;
+  const { mensaje, plan_id, historial, lang } = parsed.data;
 
   try {
-    const clasificacion = await classifySymptom(mensaje, historial);
+    const clasificacion = await classifySymptom(mensaje, historial, lang);
 
     let estimacion = null;
     const esp = clasificacion.especialidad_sugerida;

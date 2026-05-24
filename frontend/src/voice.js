@@ -1,4 +1,5 @@
 import { state } from "./store.js";
+import { t, getLang } from "./i18n/index.js";
 import { sendVoiceMessage } from "./lib/api.js";
 import {
   appendBubble,
@@ -128,9 +129,9 @@ export function initVoice() {
       mediaRecorder.start();
       enterRecordingState();
     } catch {
-      inputEl.placeholder = "No se pudo acceder al micrófono";
+      inputEl.placeholder = t("chat.micError");
       setTimeout(() => {
-        inputEl.placeholder = "Describe tu síntoma…";
+        inputEl.placeholder = t("chat.placeholder");
       }, 3000);
     }
   });
@@ -173,6 +174,7 @@ export function initVoice() {
           mimeType,
           state.planId,
           state.history.slice(0, -1),
+          getLang(),
         );
         removeLoading();
         const { clasificacion, estimacion } = data;
@@ -195,10 +197,7 @@ export function initVoice() {
         saveChatLog();
       } catch {
         removeLoading();
-        appendBubble(
-          "agent",
-          "No pude procesar la nota de voz. Intenta de nuevo.",
-        );
+        appendBubble("agent", t("chat.voiceError"));
       } finally {
         inputEl.disabled = false;
         sendBtn.disabled = false;

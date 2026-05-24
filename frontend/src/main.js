@@ -1,4 +1,5 @@
 import { state, LS_CHAT } from "./store.js";
+import { t, getLang, setLang, applyTranslations } from "./i18n/index.js";
 import { sendMessage } from "./lib/api.js";
 import {
   chatEl,
@@ -40,6 +41,7 @@ formEl.addEventListener("submit", async (e) => {
       msg,
       state.planId,
       state.history.slice(0, -1),
+      getLang(),
     );
     removeLoading();
 
@@ -60,7 +62,7 @@ formEl.addEventListener("submit", async (e) => {
     removeLoading();
     appendBubble(
       "agent",
-      "Tuve un problema procesando tu mensaje. Intenta de nuevo en unos segundos.",
+      t("chat.error"),
     );
   } finally {
     inputEl.disabled = false;
@@ -86,6 +88,14 @@ document.getElementById("nueva-consulta-btn").addEventListener("click", () => {
 });
 
 window.addEventListener("resize", () => lockToggleWidth());
+
+applyTranslations();
+
+const currentLang = getLang();
+document.getElementById("lang-es").classList.toggle("active", currentLang === "es");
+document.getElementById("lang-en").classList.toggle("active", currentLang === "en");
+document.getElementById("lang-es").addEventListener("click", () => setLang("es"));
+document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
 
 initVoice();
 initDrawer();

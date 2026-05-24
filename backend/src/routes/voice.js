@@ -21,6 +21,7 @@ const voiceSchema = z.object({
       message: "tipo de audio no soportado",
     }),
   plan_id: z.string().min(1).max(64),
+  lang: z.enum(["es", "en"]).optional().default("es"),
   historial: z
     .array(
       z.object({ role: z.enum(["user", "model"]), text: z.string().max(2000) }),
@@ -38,13 +39,14 @@ router.post("/", async (req, res) => {
       .json({ error: "input inválido", detalles: parsed.error.issues });
   }
 
-  const { audio, mime_type, plan_id, historial } = parsed.data;
+  const { audio, mime_type, plan_id, historial, lang } = parsed.data;
 
   try {
     const clasificacion = await classifySymptomFromAudio(
       audio,
       mime_type,
       historial,
+      lang,
     );
 
     let estimacion = null;

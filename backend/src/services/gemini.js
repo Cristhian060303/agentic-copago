@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const SYSTEM_PROMPT = `Eres CopagoIA, un asistente médico-administrativo para pacientes en Ecuador.
+const BASE_PROMPT = `Eres CopagoIA, un asistente médico-administrativo para pacientes en Ecuador.
 Tu única tarea es: dado un síntoma o molestia que describe el paciente, identificar la especialidad médica más apropiada para que sea atendido.
 
 Especialidades disponibles (usa EXACTAMENTE estos ids, en minúsculas):
@@ -38,10 +38,15 @@ Reglas:
 1. Si el síntoma es vago o falta contexto (edad, duración, intensidad), pon necesita_mas_info=true y haz UNA pregunta corta en pregunta_clarificadora.
 2. Si el síntoma indica urgencia vital (dolor torácico intenso, dificultad respiratoria severa, pérdida de consciencia, sangrado abundante, signos de ACV), pon urgencia="emergencia" y en mensaje_usuario recomienda acudir a emergencias INMEDIATAMENTE antes que agendar consulta.
 3. confianza es un decimal entre 0 y 1.
-4. mensaje_usuario es una respuesta empática y breve (1-3 oraciones) en español, dirigida al paciente. No diagnostiques, no recetes, no des dosis.
+4. mensaje_usuario MUST be written in {{LANG}}. It must be empathetic and brief (1-3 sentences), directed at the patient. Do not diagnose, prescribe, or suggest doses.
 5. Si el mensaje no es médico (saludo, broma, off-topic), responde amablemente que solo puedes orientar sobre especialidades médicas y costos. En ese caso especialidad_sugerida=null y necesita_mas_info=false.
 6. Si el síntoma claramente corresponde a pediatría (paciente menor de edad mencionado), prefiere pediatria sobre la especialidad adulto equivalente.
 7. NUNCA inventes especialidades fuera de la lista.`;
+
+function buildSystemPrompt(lang = "es") {
+  const langLabel = lang === "en" ? "English" : "Spanish (español)";
+  return BASE_PROMPT.replace("{{LANG}}", langLabel);
+}
 
 let _client = null;
 function client() {
@@ -57,10 +62,11 @@ export async function classifySymptomFromAudio(
   audioBase64,
   mimeType,
   history = [],
+  lang = "es",
 ) {
   const model = client().getGenerativeModel({
     model: process.env.GEMINI_MODEL || "gemini-flash-lite-latest",
-    systemInstruction: SYSTEM_PROMPT,
+    systemInstruction: buildSystemPrompt(lang),
     generationConfig: {
       responseMimeType: "application/json",
       temperature: 0.3,
@@ -104,10 +110,10 @@ export async function classifySymptomFromAudio(
   };
 }
 
-export async function classifySymptom(userMessage, history = []) {
+export async function classifySymptom(userMessage, history = [], lang = "es") {
   const model = client().getGenerativeModel({
     model: process.env.GEMINI_MODEL || "gemini-flash-lite-latest",
-    systemInstruction: SYSTEM_PROMPT,
+    systemInstruction: buildSystemPrompt(lang),
     generationConfig: {
       responseMimeType: "application/json",
       temperature: 0.3,

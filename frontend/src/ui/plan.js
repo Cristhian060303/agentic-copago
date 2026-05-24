@@ -1,4 +1,5 @@
 import { state, LS_PLAN } from "../store.js";
+import { t } from "../i18n/index.js";
 import { escapeHtml } from "./chat.js";
 import { fetchPlans } from "../lib/api.js";
 import { restoreSession } from "../session.js";
@@ -83,7 +84,7 @@ export async function loadPlans() {
 
     restoreSession(plans);
   } catch (e) {
-    planLabel.textContent = "Sin conexión";
+    planLabel.textContent = t("header.noConnection");
     console.error(e);
   }
 }

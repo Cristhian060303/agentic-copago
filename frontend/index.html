@@ -74,7 +74,8 @@
             >
               CopagoIA
             </h1>
-            <p class="text-xs leading-tight truncate" style="color: #78c0e0">
+            <p class="text-xs leading-tight truncate" style="color: #78c0e0"
+               data-i18n="header.subtitle">
               Powered by TDCDev · hackIAthon 2026
             </p>
           </div>
@@ -83,6 +84,7 @@
           <button
             type="button"
             id="nueva-consulta-btn"
+            data-i18n-title="header.newChat"
             title="Nueva consulta"
             aria-label="Nueva consulta"
             class="p-1.5 rounded-xl transition-colors flex-shrink-0 hover:bg-white/10"
@@ -114,6 +116,7 @@
             <span
               class="hidden sm:inline text-xs font-semibold uppercase tracking-wide whitespace-nowrap"
               style="color: #78c0e0"
+              data-i18n="header.myPlan"
               >Mi plan</span
             >
             <div class="relative" id="plan-dropdown-wrapper">
@@ -155,6 +158,18 @@
         class="flex flex-col gap-4 overflow-y-auto px-1 pb-1"
       ></div>
 
+      <div id="lang-switcher">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <button id="lang-es" class="lang-btn">ES</button>
+        <span class="lang-divider">|</span>
+        <button id="lang-en" class="lang-btn">EN</button>
+      </div>
+
       <form
         id="chat-form"
         class="chat-input-bar bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center gap-1 p-1.5 flex-shrink-0"
@@ -163,6 +178,7 @@
           id="chat-input"
           type="text"
           placeholder="Describe tu síntoma…"
+          data-i18n-placeholder="chat.placeholder"
           class="flex-1 px-3 py-2 outline-none text-slate-800 bg-transparent text-sm placeholder-slate-400 min-w-0"
           autocomplete="off"
           maxlength="500"
@@ -176,7 +192,7 @@
           <span
             class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0 animate-pulse"
           ></span>
-          <span class="text-sm text-slate-500">Grabando</span>
+          <span class="text-sm text-slate-500" data-i18n="chat.recording">Grabando</span>
           <span
             id="recording-timer"
             class="text-sm font-mono font-semibold ml-auto pr-1"
@@ -264,7 +280,7 @@
           id="send-btn"
           class="send-btn text-white px-4 py-2 rounded-xl font-semibold text-sm flex-shrink-0 shadow-sm"
         >
-          Enviar
+          <span data-i18n="chat.send">Enviar</span>
         </button>
       </form>
 
@@ -288,7 +304,7 @@
           <line x1="12" y1="9" x2="12" y2="13" />
           <line x1="12" y1="17" x2="12.01" y2="17" />
         </svg>
-        <span
+        <span data-i18n="chat.disclaimer"
           >Estimación informativa —
           <strong>no reemplaza la consulta médica</strong> ni constituye
           autorización del seguro.</span

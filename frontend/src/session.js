@@ -1,4 +1,5 @@
 import { state, LS_CHAT, LS_PLAN, LS_SESSIONS, MAX_SESSIONS } from "./store.js";
+import { t } from "./i18n/index.js";
 import {
   chatEl,
   appendBubble,
@@ -56,7 +57,7 @@ export function archiveCurrentSession() {
   const title =
     firstUser.type === "user_text"
       ? firstUser.text.slice(0, 50)
-      : "Nota de voz";
+      : t("drawer.voiceNote");
   const firstEstimate = state.chatLog.find((e) => e.type === "estimate");
   const especialidad = firstEstimate?.estimacion?.especialidad ?? null;
 
