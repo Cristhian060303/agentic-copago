@@ -283,6 +283,47 @@
           </button>
         </div>
 
+        <div
+          id="image-preview"
+          style="display: none"
+          class="flex-1 flex items-center gap-2 px-2"
+        >
+          <img id="image-preview-img" class="h-10 w-10 rounded-lg object-cover flex-shrink-0" src="" alt="" />
+          <span class="text-xs flex-1 truncate" style="color: var(--text-secondary)"
+                data-i18n="chat.imageAttached">Imagen adjunta</span>
+          <button
+            type="button"
+            id="image-delete-btn"
+            class="p-1.5 rounded-lg flex-shrink-0 hover:text-red-500 hover:bg-red-50 transition-colors"
+            style="color: var(--text-muted)"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6l-1 14H6L5 6" />
+              <path d="M9 6V4h6v2" />
+            </svg>
+          </button>
+        </div>
+
+        <input type="file" id="image-file-input" accept="image/jpeg,image/png,image/webp"
+               style="display: none" />
+
+        <button
+          type="button"
+          id="image-btn"
+          data-i18n-title="chat.attachImage"
+          title="Adjuntar imagen"
+          aria-label="Adjuntar imagen"
+          class="voice-btn p-2 rounded-xl flex-shrink-0"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </button>
         <button
           type="button"
           id="voice-btn"

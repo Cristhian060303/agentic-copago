@@ -17,6 +17,11 @@ export default {
     voiceError: "No pude procesar la nota de voz. Intenta de nuevo.",
     micError: "No se pudo acceder al micrófono",
     recording: "Grabando",
+    imageError: "No pude procesar la imagen. Intenta de nuevo.",
+    imageTypeError: "Solo JPG, PNG o WebP",
+    imageSizeError: "Imagen muy grande (máx. 3MB)",
+    attachImage: "Adjuntar imagen",
+    imageAttached: "Imagen adjunta",
     disclaimer:
       "Estimación informativa — <strong>no reemplaza la consulta médica</strong> ni constituye autorización del seguro.",
   },
@@ -30,6 +35,7 @@ export default {
     deleteSessionConfirm: "¿Eliminar esta consulta del historial?",
     deleteSessionMsg: "Esta acción no se puede deshacer.",
     voiceNote: "Nota de voz",
+    imageNote: "Imagen",
   },
   modal: {
     cancel: "Cancelar",

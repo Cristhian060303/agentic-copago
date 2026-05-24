@@ -15,6 +15,7 @@ import { saveChatLog, archiveCurrentSession } from "./session.js";
 import { loadPlans, lockToggleWidth } from "./ui/plan.js";
 import { initDrawer, renderDrawer } from "./ui/drawer.js";
 import { initVoice } from "./voice.js";
+import { initImage } from "./image.js";
 
 const formEl = document.getElementById("chat-form");
 const inputEl = document.getElementById("chat-input");
@@ -24,6 +25,10 @@ formEl.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (state.pendingAudio) {
     window.__submitVoiceMessage?.();
+    return;
+  }
+  if (state.pendingImage) {
+    window.__submitImageMessage?.();
     return;
   }
   const msg = inputEl.value.trim();
@@ -78,6 +83,7 @@ formEl.addEventListener("submit", async (e) => {
 document.getElementById("nueva-consulta-btn").addEventListener("click", () => {
   archiveCurrentSession();
   window.__resetVoice?.();
+  window.__resetImage?.();
   state.currentSessionId = null;
   state.history = [];
   state.chatLog = [];
@@ -114,5 +120,6 @@ document.getElementById("theme-toggle-btn").addEventListener("click", () => {
 });
 
 initVoice();
+initImage();
 initDrawer();
 loadPlans();

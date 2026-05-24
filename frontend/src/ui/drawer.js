@@ -141,12 +141,19 @@ export function renderDrawer() {
     .map((s) => {
       const active = s.id === state.currentSessionId;
       const especialidad = s.especialidad ? formatEspecialidad(s.especialidad) : null;
-      const isVoice = s.chatLog?.find((e) => e.type === "user_text" || e.type === "user_voice")?.type === "user_voice";
+      const firstEntry = s.chatLog?.find((e) => e.type === "user_text" || e.type === "user_voice" || e.type === "user_image");
+      const entryType = firstEntry?.type;
       const iconStroke = active ? "white" : "var(--drawer-accent)";
-      const sessionIcon = isVoice
+      const sessionIcon = entryType === "user_voice"
         ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${iconStroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
              <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+           </svg>`
+        : entryType === "user_image"
+        ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${iconStroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+             <circle cx="8.5" cy="8.5" r="1.5"/>
+             <polyline points="21 15 16 10 5 21"/>
            </svg>`
         : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${iconStroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>

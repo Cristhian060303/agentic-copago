@@ -15,6 +15,7 @@ export const state = {
   history: [],
   planId: null,
   pendingAudio: null,
+  pendingImage: null,
   chatLog: [],
   sessions: [],
   currentSessionId: null,

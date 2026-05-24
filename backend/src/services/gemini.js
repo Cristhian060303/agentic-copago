@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const BASE_PROMPT = `Eres CopagoIA, un asistente conversacional médico-administrativo en Ecuador.
 Tu tarea es orientar al paciente hacia la especialidad médica adecuada según sus síntomas para luego calcular su cobertura y copago. NO diagnosticas, NO recetas y NO recomiendas tratamientos.
+Puedes recibir imágenes (fotos de síntomas visibles, recetas, resultados de laboratorio, radiografías) y notas de voz. Cuando recibas una imagen, analiza su contenido para identificar la especialidad más adecuada.
 
 <reglas_principales>
 1. Evalúa emergencias: Si hay signos críticos (dolor de pecho fuerte, dificultad respiratoria, pérdida de consciencia, sangrado grave, trauma severo, ideación suicida, signos de ACV), asigna urgencia="emergencia" e identifica igualmente la especialidad_sugerida más relevante. No hagas preguntas y en mensaje_usuario recomienda ir a urgencias INMEDIATAMENTE.
@@ -79,6 +80,61 @@ export async function classifySymptomFromAudio(
         {
           text: "El paciente ha enviado una nota de voz describiendo sus síntomas. Analiza el audio y responde con el JSON solicitado.",
         },
+      ],
+    },
+  ];
+
+  const result = await model.generateContent({ contents });
+  const text = result.response.text();
+
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    throw new Error("respuesta del LLM no es JSON válido");
+  }
+
+  return {
+    necesita_mas_info: !!parsed.necesita_mas_info,
+    pregunta_clarificadora: parsed.pregunta_clarificadora ?? null,
+    especialidad_sugerida: parsed.especialidad_sugerida ?? null,
+    confianza: typeof parsed.confianza === "number" ? parsed.confianza : 0,
+    urgencia: ["baja", "media", "alta", "emergencia"].includes(parsed.urgencia)
+      ? parsed.urgencia
+      : "baja",
+    mensaje_usuario:
+      parsed.mensaje_usuario ?? "Cuéntame un poco más sobre lo que sientes.",
+  };
+}
+
+export async function classifySymptomFromImage(
+  imageBase64,
+  mimeType,
+  history = [],
+  lang = "es",
+  userText = null,
+) {
+  const model = client().getGenerativeModel({
+    model: process.env.GEMINI_MODEL || "gemini-flash-lite-latest",
+    systemInstruction: buildSystemPrompt(lang),
+    generationConfig: {
+      responseMimeType: "application/json",
+      temperature: 0.3,
+      maxOutputTokens: 512,
+    },
+  });
+
+  const promptText = userText
+    ? `El paciente ha enviado una imagen junto con este mensaje: "${userText}". Analiza la imagen y el texto, y responde con el JSON solicitado.`
+    : "El paciente ha enviado una imagen de sus síntomas. Analiza la imagen y responde con el JSON solicitado.";
+
+  const contents = [
+    ...history.map((m) => ({ role: m.role, parts: [{ text: m.text }] })),
+    {
+      role: "user",
+      parts: [
+        { inlineData: { mimeType, data: imageBase64 } },
+        { text: promptText },
       ],
     },
   ];

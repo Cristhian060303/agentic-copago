@@ -281,6 +281,38 @@ export function appendVoiceBubbleStatic(duration) {
   chatEl.scrollTop = chatEl.scrollHeight;
 }
 
+export function appendImageBubble(blobUrl) {
+  const wrap = document.createElement("div");
+  wrap.className = "chat-bubble flex justify-end";
+  wrap.innerHTML = `
+    <div class="rounded-2xl rounded-tr-sm overflow-hidden shadow-sm"
+         style="background:var(--royal); max-width:240px; padding:3px">
+      <img src="${escapeHtml(blobUrl)}" alt=""
+           class="w-full rounded-xl cursor-pointer" style="display:block"
+           onclick="window.open(this.src,'_blank')"/>
+    </div>`;
+  chatEl.appendChild(wrap);
+  chatEl.scrollTop = chatEl.scrollHeight;
+}
+
+export function appendImageBubbleStatic() {
+  const wrap = document.createElement("div");
+  wrap.className = "chat-bubble flex justify-end";
+  wrap.innerHTML = `
+    <div class="rounded-2xl rounded-tr-sm px-4 py-3 shadow-sm flex items-center gap-2"
+         style="background:var(--royal); min-width:120px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <span class="text-white text-xs">${t("drawer.imageNote")}</span>
+    </div>`;
+  chatEl.appendChild(wrap);
+  chatEl.scrollTop = chatEl.scrollHeight;
+}
+
 export function createWelcomeBubble() {
   const wrap = document.createElement("div");
   wrap.className =

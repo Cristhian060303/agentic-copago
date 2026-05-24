@@ -6,6 +6,7 @@ import agentRouter from "./routes/agent.js";
 import plansRouter from "./routes/plans.js";
 import voiceRouter from "./routes/voice.js";
 import hospitalsRouter from "./routes/hospitals.js";
+import imageRouter from "./routes/image.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -29,6 +30,7 @@ app.use("/api/agent", agentRouter);
 app.use("/api/plans", plansRouter);
 app.use("/api/voice", voiceRouter);
 app.use("/api/hospitals", hospitalsRouter);
+app.use("/api/image", imageRouter);
 
 app.get("/health", (_req, res) => res.json({ ok: true, ts: Date.now() }));
 

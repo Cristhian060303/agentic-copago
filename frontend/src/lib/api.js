@@ -13,6 +13,19 @@ export async function sendVoiceMessage(audio, mime_type, plan_id, historial, lan
   return r.json();
 }
 
+export async function sendImageMessage(image, mime_type, plan_id, historial, lang, mensaje = null) {
+  const r = await fetch(`${API_BASE}/api/image`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ image, mime_type, plan_id, historial, lang, mensaje }),
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.error || `HTTP ${r.status}`);
+  }
+  return r.json();
+}
+
 export async function fetchPlans() {
   const r = await fetch(`${API_BASE}/api/plans`);
   if (!r.ok) throw new Error("no se pudieron cargar los planes");

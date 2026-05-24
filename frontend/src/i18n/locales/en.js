@@ -17,6 +17,11 @@ export default {
     voiceError: "I could not process the voice note. Please try again.",
     micError: "Could not access microphone",
     recording: "Recording",
+    imageError: "I could not process the image. Please try again.",
+    imageTypeError: "Only JPG, PNG or WebP",
+    imageSizeError: "Image too large (max 3MB)",
+    attachImage: "Attach image",
+    imageAttached: "Image attached",
     disclaimer:
       "Informational estimate — <strong>does not replace medical consultation</strong> or constitute insurance authorization.",
   },
@@ -30,6 +35,7 @@ export default {
     deleteSessionConfirm: "Delete this consultation from history?",
     deleteSessionMsg: "This action cannot be undone.",
     voiceNote: "Voice note",
+    imageNote: "Image",
   },
   modal: {
     cancel: "Cancel",

@@ -4,6 +4,7 @@ import {
   chatEl,
   appendBubble,
   appendVoiceBubbleStatic,
+  appendImageBubbleStatic,
   appendUrgency,
   appendEstimate,
   createWelcomeBubble,
@@ -48,7 +49,7 @@ export function persistSessions() {
 
 export function archiveCurrentSession() {
   const firstUser = state.chatLog.find(
-    (e) => e.type === "user_text" || e.type === "user_voice",
+    (e) => e.type === "user_text" || e.type === "user_voice" || e.type === "user_image",
   );
   if (!firstUser) return;
 
@@ -57,7 +58,9 @@ export function archiveCurrentSession() {
   const title =
     firstUser.type === "user_text"
       ? firstUser.text.slice(0, 50)
-      : t("drawer.voiceNote");
+      : firstUser.type === "user_image"
+        ? (firstUser.text ? firstUser.text.slice(0, 50) : t("drawer.imageNote"))
+        : t("drawer.voiceNote");
   const firstEstimate = state.chatLog.find((e) => e.type === "estimate");
   const especialidad = firstEstimate?.estimacion?.especialidad ?? null;
 
@@ -100,6 +103,9 @@ export function replayLog(log) {
     } else if (entry.type === "user_voice") {
       appendVoiceBubbleStatic(entry.duration);
       state.history.push({ role: "user", text: "[nota de voz]" });
+    } else if (entry.type === "user_image") {
+      appendImageBubbleStatic();
+      state.history.push({ role: "user", text: entry.text || "[imagen]" });
     } else if (entry.type === "agent") {
       appendBubble("agent", entry.text);
       state.history.push({ role: "model", text: entry.text });
@@ -137,13 +143,13 @@ export function restoreSession(plans) {
     if (!log.length) return;
     state.chatLog = log;
     const firstUser = log.find(
-      (e) => e.type === "user_text" || e.type === "user_voice",
+      (e) => e.type === "user_text" || e.type === "user_voice" || e.type === "user_image",
     );
     if (firstUser) {
       const firstText = firstUser.type === "user_text" ? firstUser.text : null;
       const match = state.sessions.find((s) => {
         const su = s.chatLog?.find(
-          (e) => e.type === "user_text" || e.type === "user_voice",
+          (e) => e.type === "user_text" || e.type === "user_voice" || e.type === "user_image",
         );
         return su?.type === "user_text" && su.text === firstText;
       });
