@@ -220,6 +220,7 @@ export function renderDrawer() {
         const sendBtn = document.getElementById("send-btn");
         inputEl.disabled = false;
         sendBtn.disabled = false;
+        renderDrawer();
         closeDrawer();
         inputEl.focus();
         return;
