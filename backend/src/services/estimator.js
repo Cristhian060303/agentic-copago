@@ -46,13 +46,11 @@ export function estimate({ specialty, planId }) {
   const coberturaBase = plan.cobertura[tipoConsulta] ?? 0;
 
   const opciones = _hospitals
-    .filter((h) => h.especialidades.includes(specialty))
+    .filter((h) => h.especialidades.includes(specialty) && plan.hospitales_red.includes(h.id))
     .map((h) => {
       const precioBase = h.precios[tipoConsulta];
-      const enRed = plan.hospitales_red.includes(h.id);
-      const coberturaAplicada = enRed
-        ? coberturaBase
-        : Math.max(0, coberturaBase - 30);
+      const enRed = true;
+      const coberturaAplicada = coberturaBase;
       const montoCubierto = (precioBase * coberturaAplicada) / 100;
       const copagoCalculado = precioBase - montoCubierto;
       const copagoFinal = Math.max(copagoCalculado, plan.copago_minimo);

@@ -36,11 +36,7 @@ router.post("/", async (req, res) => {
 
     let estimacion = null;
     const esp = clasificacion.especialidad_sugerida;
-    if (
-      !clasificacion.necesita_mas_info &&
-      esp &&
-      ESPECIALIDADES_VALIDAS.has(esp)
-    ) {
+    if (!clasificacion.necesita_mas_info && esp && ESPECIALIDADES_VALIDAS.has(esp)) {
       try {
         estimacion = estimate({ specialty: esp, planId: plan_id });
       } catch (e) {
