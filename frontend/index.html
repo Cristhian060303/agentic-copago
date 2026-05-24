@@ -114,6 +114,11 @@
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
             </svg>
           </button>
+          <div id="lang-switcher">
+            <button id="lang-es" class="lang-btn">ES</button>
+            <span class="lang-divider">|</span>
+            <button id="lang-en" class="lang-btn">EN</button>
+          </div>
           <button
             type="button"
             id="nueva-consulta-btn"
@@ -185,17 +190,29 @@
             ></ul>
           </div>
         </div>
-        <div id="lang-switcher">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </div>
+
+      <div
+        id="image-preview"
+        style="display: none; background: var(--bg-card); border: 1px solid var(--border-card)"
+        class="flex items-center gap-2 px-3 py-2 rounded-xl flex-shrink-0 max-w-3xl mx-auto w-full"
+      >
+        <img id="image-preview-img" class="h-12 w-12 rounded-lg object-cover flex-shrink-0" src="" alt="" />
+        <span class="text-xs flex-1 truncate" style="color: var(--text-secondary)"
+              data-i18n="chat.imageAttached">Imagen adjunta</span>
+        <button
+          type="button"
+          id="image-delete-btn"
+          class="p-1.5 rounded-lg flex-shrink-0 hover:text-red-500 hover:bg-red-50 transition-colors"
+          style="color: var(--text-muted)"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6" />
+            <path d="M19 6l-1 14H6L5 6" />
+            <path d="M9 6V4h6v2" />
           </svg>
-          <button id="lang-es" class="lang-btn">ES</button>
-          <span class="lang-divider">|</span>
-          <button id="lang-en" class="lang-btn">EN</button>
-        </div>
+        </button>
       </div>
 
       <form
@@ -278,29 +295,6 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-              <polyline points="3 6 5 6 21 6" />
-              <path d="M19 6l-1 14H6L5 6" />
-              <path d="M9 6V4h6v2" />
-            </svg>
-          </button>
-        </div>
-
-        <div
-          id="image-preview"
-          style="display: none"
-          class="flex-1 flex items-center gap-2 px-2"
-        >
-          <img id="image-preview-img" class="h-10 w-10 rounded-lg object-cover flex-shrink-0" src="" alt="" />
-          <span class="text-xs flex-1 truncate" style="color: var(--text-secondary)"
-                data-i18n="chat.imageAttached">Imagen adjunta</span>
-          <button
-            type="button"
-            id="image-delete-btn"
-            class="p-1.5 rounded-lg flex-shrink-0 hover:text-red-500 hover:bg-red-50 transition-colors"
-            style="color: var(--text-muted)"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="3 6 5 6 21 6" />
               <path d="M19 6l-1 14H6L5 6" />
               <path d="M9 6V4h6v2" />

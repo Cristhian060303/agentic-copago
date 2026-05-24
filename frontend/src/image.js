@@ -57,8 +57,6 @@ export function initImage() {
     const url = URL.createObjectURL(blob);
     imagePreviewEl.style.display = "flex";
     imagePreviewImg.src = url;
-    voiceBtn.style.display = "none";
-    imageBtn.style.display = "none";
     state.pendingImage = { blob, mimeType };
   }
 
@@ -69,8 +67,6 @@ export function initImage() {
     state.pendingImage = null;
     imagePreviewEl.style.display = "none";
     imagePreviewImg.src = "";
-    voiceBtn.style.display = "";
-    imageBtn.style.display = "";
     fileInput.value = "";
   }
 

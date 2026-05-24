@@ -407,35 +407,32 @@ body {
 #lang-switcher {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 4px;
+  gap: 2px;
   flex-shrink: 0;
-  padding: 0 4px;
-  color: var(--text-muted);
 }
 
 .lang-btn {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 2px 5px;
+  padding: 2px 4px;
   border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.45);
   transition: color 0.15s;
 }
 .lang-btn:hover {
-  color: var(--text-accent);
+  color: rgba(255, 255, 255, 0.8);
 }
 .lang-btn.active {
-  color: var(--royal);
+  color: var(--sky);
 }
 
 .lang-divider {
   font-size: 0.65rem;
-  color: var(--border-card);
+  color: rgba(255, 255, 255, 0.3);
   user-select: none;
 }
 
