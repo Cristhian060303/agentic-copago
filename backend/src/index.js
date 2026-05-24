@@ -12,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || "*";
 
+app.set("trust proxy", 1);
 app.use(cors({ origin: FRONTEND_ORIGIN }));
 app.use(express.json({ limit: "4mb" }));
 
